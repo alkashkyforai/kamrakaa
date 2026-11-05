@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delete your data — Kam Rakaa | كام ركعة</title>
+    <style>
+      :root {
+        --bg: #fafaf7;
+        --card: #fff;
+        --text: #191920;
+        --muted: #55565f;
+        --line: #e3e3dd;
+        --accent: #2563eb;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17181c;
+          --card: #202127;
+          --text: #fafafc;
+          --muted: #b4b5be;
+          --line: #34353d;
+          --accent: #6ea0ff;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font:
+          16px/1.65 system-ui,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 24px 18px 64px;
+      }
+      h1 {
+        font-size: 2rem;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 1.2rem;
+        margin: 30px 0 8px;
+        padding-top: 6px;
+        border-top: 1px solid var(--line);
+      }
+      .muted {
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      a {
+        color: var(--accent);
+      }
+      li {
+        margin: 5px 0;
+      }
+      .box {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 12px 16px;
+      }
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 18px 18px 0;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-weight: 800;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 1.05rem;
+      }
+      .brand span {
+        color: #b8860b;
+      }
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 16px;
+        font-weight: 700;
+        cursor: pointer;
+        background: var(--card);
+        color: var(--text);
+        font-size: 0.88rem;
+      }
+      html[dir="rtl"] body {
+        font-family: "Noto Kufi Arabic", system-ui, sans-serif;
+      }
+      .links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+        font-size: 0.92rem;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="topbar">
+      <a class="brand" href="index.html"
+        >🕌 Kam Rakaa <span>· كام ركعة</span></a
+      >
+      <div style="display: flex; gap: 10px; align-items: center">
+        <button
+          class="pill"
+          onclick="location.href = 'privacy.html'"
+          data-en="Privacy Policy"
+          data-ar="سياسة الخصوصية"
+        >
+          Privacy Policy
+        </button>
+        <button class="pill" id="langBtn" type="button">عربي</button>
+      </div>
+    </div>
+    <main>
+      <h1
+        data-en="Delete your Kam Rakaa account data"
+        data-ar="حذف بيانات حسابك في كام ركعة"
+      >
+        Delete your Kam Rakaa account data
+      </h1>
+      <p
+        class="muted"
+        data-en="Kam Rakaa (كام ركعة) · Last updated: November 5, 2026"
+        data-ar="كام ركعة · آخر تحديث: 5 نوفمبر 2026"
+      >
+        Kam Rakaa (كام ركعة) · Last updated: November 5, 2026
+      </p>
+
+      <p
+        data-en="Kam Rakaa has no servers and no developer-side accounts. Your data exists in two places only: on your phone, and (if you signed in with Google) in a hidden app-data folder inside your own Google Drive. Use either method below to remove it."
+        data-ar="كام ركعة لا يملك خوادم ولا حسابات لدى المطوّر. بياناتك موجودة في مكانين فقط: على هاتفك، و(إذا سجّلت الدخول عبر Google) في مجلد بيانات مخفي داخل Google Drive الخاص بك. استخدم إحدى الطريقتين أدناه للحذف."
+      >
+        …
+      </p>
+
+      <h2
+        data-en="Method 1: Delete inside the app (recommended)"
+        data-ar="الطريقة الأولى: الحذف من داخل التطبيق (موصى بها)"
+      >
+        Method 1: Delete inside the app (recommended)
+      </h2>
+      <ol>
+        <li
+          data-en="Open Kam Rakaa and connect to the internet."
+          data-ar="افتح كام ركعة واتصل بالإنترنت."
+        >
+          Open Kam Rakaa and connect to the internet.
+        </li>
+        <li
+          data-en="Go to Settings → Profile (you must be signed in with Google)."
+          data-ar="اذهب إلى الإعدادات ← الملف الشخصي (يجب تسجيل الدخول عبر Google)."
+        >
+          Go to Settings → Profile (you must be signed in with Google).
+        </li>
+        <li
+          data-en="Tap Delete account, then confirm twice."
+          data-ar="اضغط «حذف الحساب»، ثم أكّد مرتين."
+        >
+          Tap Delete account, then confirm twice.
+        </li>
+      </ol>
+      <p data-en="This permanently:" data-ar="وهذا يحذف بشكل نهائي:">
+        This permanently:
+      </p>
+      <ul>
+        <li
+          data-en="deletes your backup file from your Google Drive hidden app-data folder;"
+          data-ar="ملف النسخة الاحتياطية من مجلد بيانات التطبيق المخفي في Google Drive؛"
+        >
+          deletes your backup file from your Google Drive hidden app-data
+          folder;
+        </li>
+        <li
+          data-en="erases your saved prayers, sync information, and cached location and city from the phone;"
+          data-ar="صلواتك المحفوظة وبيانات المزامنة وموقعك ومدينتك المخزّنة من الهاتف؛"
+        >
+          erases your saved prayers, sync information, and cached location and
+          city from the phone;
+        </li>
+        <li
+          data-en="revokes the app's access to your Google account and signs you out."
+          data-ar="يلغي وصول التطبيق إلى حساب Google ويسجّل خروجك."
+        >
+          revokes the app's access to your Google account and signs you out.
+        </li>
+      </ul>
+      <p
+        data-en="If the phone is offline, nothing is deleted and the app asks you to try again when connected."
+        data-ar="إذا كان الهاتف دون اتصال، لن يُحذف شيء وسيطلب منك التطبيق المحاولة مجدداً عند الاتصال."
+      >
+        …
+      </p>
+
+      <h2
+        data-en="Method 2: Delete without opening the app"
+        data-ar="الطريقة الثانية: الحذف دون فتح التطبيق"
+      >
+        Method 2: Delete without opening the app
+      </h2>
+      <ol>
+        <li
+          data-en="Open Google Drive → Settings → Manage apps → Kam Rakaa → Delete hidden app data."
+          data-ar="افتح Google Drive ← الإعدادات ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية."
+        >
+          Open Google Drive → Settings → Manage apps → Kam Rakaa → Delete hidden
+          app data.
+        </li>
+        <li
+          data-en='Go to myaccount.google.com/permissions, select Kam Rakaa, and choose "Delete all connections" (or "Remove access").'
+          data-ar='اذهب إلى myaccount.google.com/permissions، اختر كام ركعة، واضغط "حذف جميع الاتصالات" (أو "إزالة الوصول").'
+        >
+          Go to myaccount.google.com/permissions, select Kam Rakaa, and choose
+          "Delete all connections".
+        </li>
+        <li
+          data-en="Uninstall the app, or clear its storage in your phone's settings, to remove data stored on the phone."
+          data-ar="ألغِ تثبيت التطبيق، أو امسح تخزينه من إعدادات الهاتف، لإزالة البيانات المخزّنة عليه."
+        >
+          Uninstall the app, or clear its storage in your phone's settings, to
+          remove data stored on the phone.
+        </li>
+      </ol>
+
+      <h2 data-en="What is not affected" data-ar="ما لا يتأثر">
+        What is not affected
+      </h2>
+      <ul>
+        <li
+          data-en="Your Google account itself is never deleted by the app."
+          data-ar="حساب Google نفسه لا يحذفه التطبيق أبداً."
+        >
+          Your Google account itself is never deleted by the app.
+        </li>
+        <li
+          data-en="Guest-mode data on a phone is stored separately; remove it by uninstalling the app or clearing its storage."
+          data-ar="بيانات وضع الضيف مخزّنة بشكل منفصل؛ أزِلها بإلغاء تثبيت التطبيق أو مسح تخزينه."
+        >
+          Guest-mode data on a phone is stored separately; remove it by
+          uninstalling the app or clearing its storage.
+        </li>
+        <li
+          data-en="Other phones signed into the same account keep their local copy until you sign out or delete data on them too. Once access is revoked, they can no longer sync."
+          data-ar="الهواتف الأخرى المسجّلة على نفس الحساب تحتفظ بنسختها المحلية حتى تسجّل الخروج أو تحذف بياناتها عليها أيضاً. وبعد إلغاء الوصول لا يمكنها المزامنة."
+        >
+          Other phones signed into the same account keep their local copy until
+          you sign out or delete data on them too. Once access is revoked, they
+          can no longer sync.
+        </li>
+        <li
+          data-en="We hold no copy of your data, so there is nothing for us to delete on our side."
+          data-ar="لا نحتفظ بأي نسخة من بياناتك، فلا يوجد شيء نحذفه من جانبنا."
+        >
+          We hold no copy of your data, so there is nothing for us to delete on
+          our side.
+        </li>
+      </ul>
+
+      <h2 data-en="Need help?" data-ar="تحتاج مساعدة؟">Need help?</h2>
+      <div class="box">
+        <span data-en="Email" data-ar="راسلنا على">Email</span>
+        <a href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>
+        <span
+          data-en="and we will walk you through it. See also our"
+          data-ar="وسنرافقك خطوة بخطوة. راجع أيضاً"
+          >and we will walk you through it. See also our</span
+        >
+        <a href="privacy.html" data-en="Privacy Policy" data-ar="سياسة الخصوصية"
+          >Privacy Policy</a
+        >.
+      </div>
+    </main>
+    <script>
+      (function () {
+        let l =
+          localStorage.getItem("kr-lang") ||
+          ((navigator.language || "en").toLowerCase().startsWith("ar")
+            ? "ar"
+            : "en");
+        const B = document.getElementById("langBtn");
+        function a() {
+          document.documentElement.lang = l;
+          document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+          B.textContent = l === "ar" ? "EN" : "عربي";
+          document.querySelectorAll("[data-en]").forEach((e) => {
+            const h = l === "ar" ? e.dataset.ar : e.dataset.en;
+            if (/</.test(h)) e.innerHTML = h;
+            else e.textContent = h;
+          });
+        }
+        B.onclick = () => {
+          l = l === "ar" ? "en" : "ar";
+          localStorage.setItem("kr-lang", l);
+          a();
+        };
+        a();
+      })();
+    </script>
+  </body>
+</html>
