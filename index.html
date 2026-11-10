@@ -641,40 +641,39 @@
         }
       }
       .pose-svg {
-        position: absolute;
-        inset: 32px 4px 70px;
-      }
-      .pose {
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-      .pose.on {
-        opacity: 1;
-      }
-      .pose * {
-        stroke: var(--green);
-        stroke-width: 5;
-        stroke-linecap: round;
-        fill: none;
-        filter: drop-shadow(0 0 9px rgba(127, 224, 176, 0.55));
-      }
-      .pose circle {
-        fill: var(--green);
-        stroke: none;
-      }
-      .floor {
-        position: absolute;
-        left: 8%;
-        right: 8%;
-        bottom: 48px;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 224, 94, 0.5),
-          transparent
-        );
-      }
+          position: absolute;
+          inset: 30px 4px 72px;
+          width: calc(100% - 8px);
+          height: calc(100% - 102px);
+        }
+        .pose {
+          opacity: 0;
+          transform: translateY(6px);
+          transition: opacity 0.45s, transform 0.45s;
+        }
+        .pose.on {
+          opacity: 1;
+          transform: none;
+        }
+        .pose path {
+          stroke: var(--green);
+          stroke-width: 8;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          filter: drop-shadow(0 0 8px rgba(127, 224, 176, 0.5));
+        }
+        .pose path.t {
+          stroke-width: 13; /* thicker torso */
+        }
+        .pose circle {
+          fill: var(--green);
+          stroke: none;
+          filter: drop-shadow(0 0 8px rgba(127, 224, 176, 0.5));
+        }
+        .floor {
+          display: none; /* floor is now drawn inside the SVG */
+        }
       .seq {
         position: absolute;
         left: 12px;
@@ -1593,32 +1592,51 @@
                   <span class="chip r" id="prayer">DHUHR · 4</span>
                   <svg
                     class="pose-svg"
-                    viewBox="0 0 200 250"
+                    viewBox="0 0 220 250"
+                    preserveAspectRatio="xMidYMax meet"
                     aria-hidden="true"
                   >
+                    <defs>
+                      <linearGradient id="floorG" x1="0" x2="1">
+                        <stop offset="0" stop-color="#ffe05e" stop-opacity="0" />
+                        <stop offset=".5" stop-color="#ffe05e" stop-opacity=".65" />
+                        <stop offset="1" stop-color="#ffe05e" stop-opacity="0" />
+                      </linearGradient>
+                    </defs>
+
+                    <!-- floor / prayer mat line -->
+                    <rect x="6" y="227" width="208" height="2.5" rx="1.2" fill="url(#floorG)" />
+
+                    <!-- 0 · QIYAM: standing, hands folded on chest -->
                     <g class="pose on" id="p0">
-                      <circle cx="100" cy="40" r="13" />
-                      <path
-                        d="M100 56V140M100 140 92 232M100 140l10 92M100 78 79 128M100 78l21 50"
-                      />
+                      <circle cx="104" cy="44" r="13" />
+                      <path class="t" d="M100 66V140" />
+                      <path d="M100 140V222H118" />
+                      <path d="M100 74 106 106 118 90" />
                     </g>
+
+                    <!-- 1 · RUKU': back flat, hands on knees -->
                     <g class="pose" id="p1">
-                      <circle cx="152" cy="96" r="12" />
-                      <path
-                        d="M84 142 146 106M84 142l-4 90M84 142l16 90M146 106l4 62"
-                      />
+                      <circle cx="164" cy="142" r="12" />
+                      <path class="t" d="M90 140H148" />
+                      <path d="M90 140 98 180 100 222H118" />
+                      <path d="M146 142 100 182" />
                     </g>
+
+                    <!-- 2 · SUJOOD: forehead, palms, knees, toes on floor -->
                     <g class="pose" id="p2">
-                      <circle cx="160" cy="203" r="12" />
-                      <path
-                        d="M66 180 150 199M66 180l-8 52M150 199l8 33M102 187l48 19"
-                      />
+                      <circle cx="136" cy="214" r="12" />
+                      <path class="t" d="M72 170 116 196 130 207" />
+                      <path d="M40 222 54 208 88 222 72 170" />
+                      <path d="M116 196 145 200 160 222" />
                     </g>
+
+                    <!-- 3 · JALSA: sitting on the heels, hands on thighs -->
                     <g class="pose" id="p3">
-                      <circle cx="100" cy="118" r="12" />
-                      <path
-                        d="M100 134V178M100 178 58 204M100 178l42 26M58 204l-6 28M142 204l6 28"
-                      />
+                      <circle cx="98" cy="98" r="13" />
+                      <path class="t" d="M96 198V120" />
+                      <path d="M96 198 140 220 84 222 72 216" />
+                      <path d="M96 128 108 170 128 208" />
                     </g>
                   </svg>
                   <div class="floor"></div>
