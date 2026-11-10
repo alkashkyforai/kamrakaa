@@ -2413,236 +2413,297 @@
       })();
     </script>
     <script>
-      /* ═══ Bilingual engine EN⇄AR ═══ */
-      (function () {
-        const KEY = "kr-lang";
-        let lang =
-          localStorage.getItem(KEY) ||
-          ((navigator.language || "en").toLowerCase().startsWith("ar")
-            ? "ar"
-            : "en");
-        const pill = document.getElementById("langToggle");
+    /* ═══════════════════════════════════════════════════════════════
+   Kam Rakaa — EN ⇄ AR engine for index.html
+   Replaces the old second <script> block ("Bilingual engine").
+   Key fix: text is compared AFTER collapsing whitespace, so paragraphs that your
+   code formatter wrapped over several lines now match their translation.
+   ═══════════════════════════════════════════════════════════════ */
+(function () {
+  const KEY = "kr-lang";
+  let lang =
+    localStorage.getItem(KEY) ||
+    ((navigator.language || "en").toLowerCase().startsWith("ar") ? "ar" : "en");
+  const pill = document.getElementById("langToggle");
+  const norm = (s) => s.replace(/\s+/g, " ").trim();
 
-        /* simple text-node translations: "exact English":"العربية" */
-        const T = {
-          Features: "المميزات",
-          "How it works": "كيف يعمل",
-          Languages: "اللغات",
-          FAQ: "الأسئلة الشائعة",
-          Privacy: "الخصوصية",
-          "Get the app": "حمّل التطبيق",
-          "Download on": "حمّله من",
-          "See how it works ↓": "شاهد كيف يعمل ↓",
-          "On-device AI · no photos ever":
-            "ذكاء اصطناعي على جهازك · لا صور أبداً",
-          "Pray in peace.": "صلِّ بخشوع.",
-          "We count": "ونحن نعدّ",
-          "the rakahs.": "ركعاتك.",
-          "Camera frames are analysed on your phone and discarded — never saved or uploaded. Guest mode needs no account at all.":
-            "تُحلَّل إطارات الكاميرا على هاتفك ثم تُتلف فوراً — لا تُحفظ ولا تُرفع أبداً. وضع الضيف لا يحتاج حساباً إطلاقاً.",
-          Scroll: "مرّر",
-          "Phone flat · camera up": "الهاتف مسطّح · الكاميرا إلى الأعلى",
-          Features: "المميزات",
-          "Everything around your prayer, in one quiet app.":
-            "كل ما يخصّ صلاتك، في تطبيق واحد هادئ.",
-          "From Fajr to Isha — fard, sunnah, shaf' and witr — with times, direction and history woven in.":
-            "من الفجر إلى العشاء — فرضاً وسنّةً وشفعاً وتراً — مع المواقيت والاتجاه والسجل في تطبيق واحد.",
-          "It watches, you pray": "هو يتابع، وأنت تصلّي",
-          "A neural pose model on the phone itself reads each position and walks the exact sequence of every rakah — qiyam, ruku', two sujoods, jalsa — and knows when the first tashahhud arrives. A gentle vibration marks each completed rakah. If the AI ever misses a movement, one tap saves the full prayer.":
-            "نموذج عصبي على الهاتف نفسه يقرأ كل وضعية ويسير في التسلسل الدقيق لكل ركعة — قياماً وركوعاً وسجدتين وجلوساً — ويعرف متى يحين التشهد الأول. اهتزاز لطيف يعلّم على كل ركعة مكتملة. وإن فاتت الذكاء الاصطناعي حركة، نقرة واحدة تحفظ الصلاة كاملة.",
-          "Qibla compass": "بوصلة القبلة",
-          "A live compass points to the Kaaba from wherever you are, shows the exact bearing and your distance in kilometres — with a soft haptic when you're aligned.":
-            "بوصلة حية تشير إلى الكعبة من أي مكان، وتعرض الاتجاه الدقيق ومسافتك بالكيلومترات — مع اهتزاز خفيف عندما تستقيم اتجاهك.",
-          "Accurate times": "مواقيت دقيقة",
-          Fajr: "الفجر",
-          "◆ Dhuhr": "◆ الظهر",
-          Asr: "العصر",
-          Maghrib: "المغرب",
-          Isha: "العشاء",
-          "Your history": "سجلّك",
-          "Every prayer lands on a beautiful calendar — swipe through months, open any day, see start time, duration and rakaat. Optional encrypted-by-Google backup to your own Drive.":
-            "كل صلاة تُسجَّل في تقويم جميل — تنقّل بين الشهور، وافتح أي يوم، وشاهد وقت البدء والمدة وعدد الركعات. نسخ احتياطي اختياري مشفّر من Google إلى Drive الخاص بك.",
-          "Private by design": "خصوصية في التصميم",
-          "No photos, no video, no server. Use it fully as a guest — everything stays on the device. The camera is only awake while you count.":
-            "لا صور، لا فيديو، لا خادم. استخدمه كاملاً كضيف — كل شيء يبقى على جهازك. الكاميرا لا تعمل إلا أثناء العدّ.",
-          "Made for your masjid": "صُمّم لمسجدك",
-          "15+ calculation methods — Umm al-Qura, MWL, Egyptian, Diyanet, JAKIM, Kemenag and more — with Standard/Shafi or Hanafi Asr, and auto-detection by location.":
-            "أكثر من 15 طريقة حساب — أم القرى ورابطة العالم الإسلامي والمصرية وديانت وJAKIM وكيمناج وغيرها — مع العصر للشافعية أو الحنفية، واكتشاف تلقائي لموقعك.",
-          "Qibla, live": "القبلة، مباشرة",
-          "How it works": "كيف يعمل",
-          "Ready in four steps — set up once, pray forever.":
-            "جاهز في أربع خطوات — اضبطه مرة واحدة، وصلِّ للأبد.",
-          "The only setup is recording your ruku' the first time. After that, one tap before every prayer.":
-            "الإعداد الوحيد هو تسجيل ركوعتك في المرة الأولى. بعد ذلك، نقرة واحدة قبل كل صلاة.",
-          "Place your phone": "ضع هاتفك",
-          "Lay it flat on the floor in front of your prayer spot, front camera facing up toward you. The app checks placement and tells you when it can see your whole body.":
-            "ضعه مسطّحاً على الأرض أمام مكان صلاتك، بالكاميرا الأمامية إلى الأعلى نحوك. يتحقق التطبيق من الوضعية ويخبرك عندما يرى جسمك كاملاً.",
-          "~5 seconds": "~5 ثوانٍ",
-          "Record your ruku'": "سجّل ركوعك",
-          "One-time · per person": "مرة واحدة · لكل شخص",
-          "Start and pray": "ابدأ وصلِّ",
-          "Tap Start; a calm 10-second countdown lets you settle into qiyam. Then simply pray — a gentle vibration confirms each completed rakah.":
-            "اضغط «ابدأ»؛ عدّ تنازلي هادئ لمدة 10 ثوانٍ يتيح لك الاستقرار في القيام. ثم صلِّ فقط — اهتزاز لطيف يؤكد كل ركعة مكتملة.",
-          "10 s countdown": "عدّ تنازلي 10 ثوانٍ",
-          "Stop and save": "أوقف واحفظ",
-          "Tap Stop when you finish. If a movement was missed, one tap still saves the complete prayer. Every record keeps its date, start time, duration and rakaat on your calendar.":
-            "اضغط «إيقاف» عند الانتهاء. إذا فاتت حركة، نقرة واحدة ما زالت تحفظ الصلاة كاملة. كل سجل يحتفظ بتاريخه ووقت بدئه ومدته وركعاته في تقويمك.",
-          "Saved instantly · offline": "يُحفظ فوراً · دون اتصال",
-          "By the numbers": "بالأرقام",
-          "languages, 4 right-to-left": "لغة، 4 منها من اليمين لليسار",
-          "calculation methods": "طريقة حساب",
-          "prayer types, fard & sunnah": "أنواع من الصلاة، فرضاً وسنّةً",
-          "photos or video ever uploaded": "صور أو فيديو رُفعت يوماً",
-          "Speaks your language — 43 of them.": "يتحدث لغتك — 43 لغة.",
-          "Right-to-left scripts fully supported, with dates and digits that follow each language's own conventions. The app follows your phone's language on first launch — no setup, no wrong-language flash.":
-            "دعم كامل للغات المكتوبة من اليمين لليسار، مع تواريخ وأرقام تتبع أعراف كل لغة. التطبيق يتبع لغة هاتفك عند أول تشغيل — بلا إعداد، وبلا ومضة بلغة خاطئة.",
-          "…and 15 more": "…و15 لغة أخرى",
-          Questions: "أسئلة",
-          "Good to know.": "من الجيّد أن تعرف.",
-          "Does the app record or upload video of me praying?":
-            "هل يسجّل التطبيق أو يرفع فيديو لي وأنا أصلّي؟",
-          "No. Camera frames are analysed in memory by an on-device AI model and immediately discarded. Nothing is saved to storage and nothing is sent over the network. The camera is only active while you're counting, and you can verify all of this — the app never asks for internet permission to count.":
-            "لا. تُحلَّل إطارات الكاميرا في الذاكرة بنموذج ذكاء اصطناعي على الجهاز وتُتلف فوراً. لا شيء يُحفظ ولا يُرسل عبر الشبكة. الكاميرا تعمل فقط أثناء العدّ، ويمكنك التحقق من ذلك بنفسك — فالتطبيق لا يطلب إذن الإنترنت أصلاً للعدّ.",
-          "Does it work without an account?": "هل يعمل بدون حساب؟",
-          "Fully. Guest mode keeps everything in local storage on your phone — no sign-in, no cloud, no tracking. Google sign-in exists only if you want your history backed up and synced across devices, into a hidden folder in your own Google Drive that only Kam Rakaa can see.":
-            "تماماً. وضع الضيف يحتفظ بكل شيء على هاتفك — بلا تسجيل دخول، بلا سحابة، بلا تتبّع. تسجيل الدخول عبر Google موجود فقط إذا أردت نسخ سجلّك احتياطياً ومزامنته بين أجهزتك.",
-          "What if the app misses a rakah or a movement?":
-            "ماذا لو فات التطبيق ركعة أو حركة؟",
-          "Detection is posture-based and calibrated to your own ruku', so it's robust to different bodies, mats and lighting. If a movement is ever missed, the end-of-prayer dialog notices the incomplete count and offers to save the full prayer with one tap. You can also correct the count manually before saving.":
-            "الكشف قائم على الوضعيات ومُعايَر لركوعك أنت، فهو متين مع اختلاف الأجساد والسجادات والإضاءة. إذا فاتت حركة، يلاحظ حوار نهاية الصلاة العدّ غير المكتمل ويعرض حفظ الصلاة كاملة بنقرة واحدة. يمكنك أيضاً تصحيح العدّ يدوياً قبل الحفظ.",
-          "Which prayers does it count?": "أيّ الصلوات يعدّها؟",
-          "All five obligatory prayers (Fajr 2, Dhuhr 4, Asr 4, Maghrib 3, Isha 4 rakaat) plus voluntary prayers: Sunnah 2, Sunnah 4, Shaf' 2, Witr 1 and the combined Shaf' + Witr 3 — with the sequence engine tracking the first tashahhud where it belongs.":
-            "كل الصلوات المفروضة الخمس (الفجر ركعتان، الظهر 4، العصر 4، المغرب 3، العشاء 4) إضافة إلى النوافل: السنّة ركعتان، السنّة 4، الشفع 2، الوتر 1، والشفع + الوتر 3 — مع تعقّب التشهد الأول حيث ينبغي.",
-          "How do I delete my data?": "كيف أحذف بياناتي؟",
-          "In the app: Settings → Profile → Delete account — this wipes your cloud backup, removes the local data and signs you out on every device. You can also remove the hidden backup from Google Drive → Settings → Manage apps → Kam Rakaa → Delete hidden app data. Guest data disappears the moment you clear the app's storage.":
-            "داخل التطبيق: الإعدادات ← الملف الشخصي ← حذف الحساب — يمسح نسختك الاحتياطية السحابية، ويزيل البيانات المحلية، ويسجّل خروجك من كل جهاز. يمكنك أيضاً الإزالة من Google Drive ← الإعدادات ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية.",
-          "Your prayer is private. So is your data.":
-            "صلاتك خاصة. وبياناتك أيضاً.",
-          "On-device AI": "ذكاء اصطناعي على جهازك",
-          "Pose detection runs entirely on your phone — the model never leaves the device. Camera frames are analysed in memory and discarded: never saved, never uploaded, never seen by a server. The camera is only active while you're counting.":
-            "اكتشاف الوضعيات يعمل بالكامل على هاتفك — النموذج لا يغادر الجهاز أبداً. تُحلَّل إطارات الكاميرا في الذاكرة وتُتلف: لا تُحفظ، لا تُرفع، ولا يراها أي خادم. الكاميرا تعمل فقط أثناء العدّ.",
-          "Your backup is yours": "نسختك الاحتياطية لك",
-          "Let your attention stay in the prayer.":
-            "دَع انتباهك يبقى في الصلاة.",
-          "Free to use. No account needed. Your count, kept faithfully.":
-            "مجاني الاستخدام. بلا حساب. عدّك، محفوظ بأمانة.",
-          "Contact us": "تواصل معنا",
-          Contact: "تواصل",
-          "Privacy & your data": "الخصوصية وبياناتك",
-          "Privacy Policy": "سياسة الخصوصية",
-          "Delete account data": "حذف بيانات الحساب",
-          "Google Play link coming soon": "رابط Google Play قريباً",
-          "Delete your data:": "احذف بياناتك:",
-          "© 2026 Kam Rakaa · ": "© 2026 كام ركعة · ",
-          "DHUHR · 4": "الظهر · 4",
-          "On-device AI ": "ذكاء اصطناعي على جهازك ",
-          "43 languages ": "43 لغة ",
-          "Qibla compass ": "بوصلة القبلة ",
-          "Prayer times ": "مواقيت الصلاة ",
-          "10 prayer types ": "10 أنواع من الصلاة ",
-          "Google Drive backup ": "نسخ احتياطي على Google Drive ",
-          "Guest mode ": "وضع الضيف ",
-          "No photos, ever ": "لا صور أبداً ",
-        };
+  /* ── 1) plain text translations: "English text as it appears" → Arabic ── */
+  const DICT = {
+    /* nav / buttons */
+    "Features": "المميزات",
+    "How it works": "كيف يعمل",
+    "Languages": "اللغات",
+    "FAQ": "الأسئلة الشائعة",
+    "Privacy": "الخصوصية",
+    "Get the app": "حمّل التطبيق",
+    "Download on": "حمّله من",
+    "See how it works ↓": "شاهد كيف يعمل ↓",
+    "Contact us": "تواصل معنا",
 
-        /* rich-text swaps (elements that contain HTML tags) */
-        const SWAP = [
-          [
-            ".lead",
-            "Lay your phone flat on the floor and begin. Kam Rakaa follows your <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full prayer sequence with you — including the first <b>tashahhud</b> — and keeps count, so your mind stays in the prayer.",
-            "ضع هاتفك مسطّحاً على الأرض وابدأ الصلاة. يتابع كام ركعة <b>قيامك</b> و<b>ركوعك</b> و<b>سجودك</b>، ويسير معك في تسلسل الصلاة كاملاً — بما فيه <b>التشهد الأول</b> — ويُبقي العدّ، لتبقى قلبك حاضراً في الصلاة.",
-          ],
-          [
-            ".how-steps .hstep:nth-child(2) p",
-            "Bow once and hold for about two seconds. The app learns <em>your</em> bowing posture — not a generic one — so counting fits your body, your mat, your room.",
-            "اركع مرة واحدة واثبت نحو ثانيتين. يتعلّم التطبيق وضعية ركوعك <em>أنت</em> — لا وضعية عامة — ليناسب العدّ جسدك وسجادتك وغرفتك.",
-          ],
-          [
-            "#privacy .priv-grid .priv:nth-child(2) p",
-            'If you sign in, your history syncs to a hidden folder in <em>your own</em> Google Drive — a single file only this app can see, under the restricted <code style="font-family:var(--mono);font-size:.85em">drive.appdata</code> scope. Guest mode never touches the cloud at all.',
-            'إذا سجّلت الدخول، تتم مزامنة سجلّك إلى مجلد مخفي في Google Drive <em>الخاص بك</em> — ملف واحد لا يراه إلا هذا التطبيق، ضمن النطاق المقيّد <code style="font-family:var(--mono);font-size:.85em">drive.appdata</code>. وضع الضيف لا يلمس السحابة إطلاقاً.',
-          ],
-          [
-            "#privacy .how-del",
-            "<b>Delete your data:</b> in the app, go to <b>Settings → Profile → Delete account</b>, or remove it from <b>Google Drive → Settings (gear) → Manage apps → Kam Rakaa → Delete hidden app data</b>.",
-            "<b>احذف بياناتك:</b> في التطبيق، اذهب إلى <b>الإعدادات ← الملف الشخصي ← حذف الحساب</b>، أو أزله من <b>Google Drive ← الإعدادات (ترس) ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية</b>.",
-          ],
-          [
-            ".readout",
-            '<b id="deg">136°</b> SE · <span id="km">≈ 1,320 km</span> to Makkah',
-            '<b id="deg">136°</b> SE · <span id="km">≈ 1,320 km</span> إلى مكة',
-          ],
-        ];
+    /* hero */
+    "On-device AI · no photos ever": "ذكاء اصطناعي على جهازك · لا صور أبداً",
+    "Pray in peace.": "صلِّ بخشوع.",
+    "We count": "ونحن نعدّ",
+    "the rakahs.": "ركعاتك.",
+    "Camera frames are analysed on your phone and discarded — never saved or uploaded. Guest mode needs no account at all.":
+      "تُحلَّل إطارات الكاميرا على هاتفك ثم تُتلف فوراً — لا تُحفظ ولا تُرفع أبداً. وضع الضيف لا يحتاج حساباً إطلاقاً.",
+    "Scroll": "مرّر",
+    "DHUHR · 4": "الظهر · 4",
 
-        const POSE = {
-          QIYAM: "قيام",
-          "RUKU'": "ركوع",
-          SUJOOD: "سجود",
-          TASHAHHUD: "تشهد",
-        };
-        const orig = new WeakMap();
+    /* marquee */
+    "On-device AI": "ذكاء اصطناعي على جهازك",
+    "43 languages": "43 لغة",
+    "Qibla compass": "بوصلة القبلة",
+    "Prayer times": "مواقيت الصلاة",
+    "10 prayer types": "10 أنواع من الصلاة",
+    "Google Drive backup": "نسخ احتياطي على Google Drive",
+    "Guest mode": "وضع الضيف",
+    "No photos, ever": "لا صور أبداً",
 
-        function walk(fn) {
-          const w = document.createTreeWalker(
-            document.body,
-            NodeFilter.SHOW_TEXT,
-          );
-          let n;
-          while ((n = w.nextNode())) fn(n);
+    /* features */
+    "Everything around your prayer, in one quiet app.":
+      "كل ما يخصّ صلاتك، في تطبيق واحد هادئ.",
+    "From Fajr to Isha — fard, sunnah, shaf' and witr — with times, direction and history woven in.":
+      "من الفجر إلى العشاء — فرضاً وسنّةً وشفعاً وتراً — مع المواقيت والاتجاه والسجل في تطبيق واحد.",
+    "It watches, you pray": "هو يتابع، وأنت تصلّي",
+    "A neural pose model on the phone itself reads each position and walks the exact sequence of every rakah — qiyam, ruku', two sujoods, jalsa — and knows when the first tashahhud arrives. A gentle vibration marks each completed rakah. If the AI ever misses a movement, one tap saves the full prayer.":
+      "نموذج عصبي على الهاتف نفسه يقرأ كل وضعية ويسير في التسلسل الدقيق لكل ركعة — قياماً وركوعاً وسجدتين وجلوساً — ويعرف متى يحين التشهد الأول. اهتزاز لطيف يعلّم على كل ركعة مكتملة. وإن فاتت الذكاء الاصطناعي حركة، نقرة واحدة تحفظ الصلاة كاملة.",
+    "A live compass points to the Kaaba from wherever you are, shows the exact bearing and your distance in kilometres — with a soft haptic when you're aligned.":
+      "بوصلة حيّة تشير إلى الكعبة من أي مكان، وتعرض الاتجاه الدقيق ومسافتك بالكيلومترات — مع اهتزاز خفيف عندما تكون متجهاً نحو القبلة.",
+    "Accurate times": "مواقيت دقيقة",
+    "Fajr": "الفجر",
+    "◆ Dhuhr": "◆ الظهر",
+    "Asr": "العصر",
+    "Maghrib": "المغرب",
+    "Isha": "العشاء",
+    "Your history": "سجلّك",
+    "Every prayer lands on a beautiful calendar — swipe through months, open any day, see start time, duration and rakaat. Optional encrypted-by-Google backup to your own Drive.":
+      "كل صلاة تُسجَّل في تقويم جميل — تنقّل بين الشهور، وافتح أي يوم، وشاهد وقت البدء والمدة وعدد الركعات. نسخ احتياطي اختياري إلى Google Drive الخاص بك.",
+    "Private by design": "خصوصية في التصميم",
+    "Made for your masjid": "صُمّم لمسجدك",
+    "15+ calculation methods — Umm al-Qura, MWL, Egyptian, Diyanet, JAKIM, Kemenag and more — with Standard/Shafi or Hanafi Asr, and auto-detection by location.":
+      "أكثر من 15 طريقة حساب — أم القرى ورابطة العالم الإسلامي والهيئة المصرية وديانت التركية وJAKIM وKemenag وغيرها — مع العصر على المذهب الجمهور أو الحنفي، واكتشاف تلقائي حسب موقعك.",
+    "Qibla, live": "القبلة، مباشرة",
+
+    /* how it works */
+    "Ready in four steps — set up once, pray forever.":
+      "جاهز في أربع خطوات — اضبطه مرة واحدة، وصلِّ للأبد.",
+    "The only setup is recording your ruku' the first time. After that, one tap before every prayer.":
+      "الإعداد الوحيد هو تسجيل وضعية ركوعك في المرة الأولى. بعد ذلك، نقرة واحدة قبل كل صلاة.",
+    "Phone flat · camera up": "الهاتف مسطّح · الكاميرا إلى الأعلى",
+    "Place your phone": "ضع هاتفك",
+    "Lay it flat on the floor in front of your prayer spot, front camera facing up toward you. The app checks placement and tells you when it can see your whole body.":
+      "ضعه مسطّحاً على الأرض أمام مكان صلاتك، بالكاميرا الأمامية إلى الأعلى نحوك. يتحقق التطبيق من الوضعية ويخبرك عندما يرى جسمك كاملاً.",
+    "~5 seconds": "~5 ثوانٍ",
+    "Record your ruku'": "سجّل ركوعك",
+    "One-time · per person": "مرة واحدة · لكل شخص",
+    "Start and pray": "ابدأ وصلِّ",
+    "Tap Start; a calm 10-second countdown lets you settle into qiyam. Then simply pray — a gentle vibration confirms each completed rakah.":
+      "اضغط «ابدأ»؛ عدّ تنازلي هادئ لمدة 10 ثوانٍ يتيح لك الاستقرار في القيام. ثم صلِّ فقط — اهتزاز لطيف يؤكد كل ركعة مكتملة.",
+    "10 s countdown": "عدّ تنازلي 10 ثوانٍ",
+    "Stop and save": "أوقف واحفظ",
+    "Tap Stop when you finish. If a movement was missed, one tap still saves the complete prayer. Every record keeps its date, start time, duration and rakaat on your calendar.":
+      "اضغط «إيقاف» عند الانتهاء. إذا فاتت حركة، نقرة واحدة ما زالت تحفظ الصلاة كاملة. كل سجل يحتفظ بتاريخه ووقت بدئه ومدته وركعاته في تقويمك.",
+    "Saved instantly · offline": "يُحفظ فوراً · دون اتصال",
+
+    /* stats */
+    "By the numbers": "بالأرقام",
+    "languages, 4 right-to-left": "لغة، 4 منها تُكتب من اليمين إلى اليسار",
+    "calculation methods": "طريقة حساب",
+    "prayer types, fard & sunnah": "أنواع صلاة، فرض وسنّة",
+    "photos or video ever uploaded": "صور أو فيديو رُفعت يوماً",
+
+    /* languages */
+    "Speaks your language — 43 of them.": "يتحدث لغتك — 43 لغة.",
+    "Right-to-left scripts fully supported, with dates and digits that follow each language's own conventions. The app follows your phone's language on first launch — no setup, no wrong-language flash.":
+      "دعم كامل للغات المكتوبة من اليمين إلى اليسار، مع تواريخ وأرقام تتبع أعراف كل لغة. التطبيق يتبع لغة هاتفك عند أول تشغيل — بلا إعداد، وبلا ومضة بلغة خاطئة.",
+    "…and 15 more": "…و15 لغة أخرى",
+
+    /* faq */
+    "Questions": "أسئلة",
+    "Good to know.": "من الجيّد أن تعرف.",
+    "Does the app record or upload video of me praying?":
+      "هل يسجّل التطبيق أو يرفع فيديو لي وأنا أصلّي؟",
+    "Does it work without an account?": "هل يعمل بدون حساب؟",
+    "Fully. Guest mode keeps everything in local storage on your phone — no sign-in, no cloud, no tracking. Google sign-in exists only if you want your history backed up and synced across devices, into a hidden folder in your own Google Drive that only Kam Rakaa can see.":
+      "تماماً. وضع الضيف يحتفظ بكل شيء في التخزين المحلي على هاتفك — بلا تسجيل دخول، بلا سحابة، بلا تتبّع. تسجيل الدخول عبر Google موجود فقط إن أردت نسخ سجلّك احتياطياً ومزامنته بين أجهزتك، داخل مجلد مخفي في Google Drive الخاص بك لا يراه إلا كام ركعة.",
+    "What if the app misses a rakah or a movement?":
+      "ماذا لو فات التطبيق ركعة أو حركة؟",
+    "Which prayers does it count?": "أيّ الصلوات يعدّها؟",
+    "All five obligatory prayers (Fajr 2, Dhuhr 4, Asr 4, Maghrib 3, Isha 4 rakaat) plus voluntary prayers: Sunnah 2, Sunnah 4, Shaf' 2, Witr 1 and the combined Shaf' + Witr 3 — with the sequence engine tracking the first tashahhud where it belongs.":
+      "كل الصلوات المفروضة الخمس (الفجر ركعتان، الظهر 4، العصر 4، المغرب 3، العشاء 4) إضافة إلى النوافل: السنّة ركعتان، السنّة 4، الشفع 2، الوتر 1، والشفع + الوتر 3 — مع تعقّب التشهد الأول حيث ينبغي.",
+    "How do I delete my data?": "كيف أحذف بياناتي؟",
+
+    /* privacy */
+    "Your prayer is private. So is your data.": "صلاتك خاصة. وبياناتك أيضاً.",
+    "Your backup is yours": "نسختك الاحتياطية لك",
+
+    /* cta + footer */
+    "Let your attention stay on the prayer.": "دَع انتباهك يبقى في الصلاة.",
+    "Free to use. No account needed. Your count, kept faithfully.":
+      "مجاني الاستخدام. بلا حساب. عدّك، محفوظ بأمانة.",
+    "Privacy & your data": "الخصوصية وبياناتك",
+    "Contact": "تواصل",
+    "Google Play link coming soon": "رابط Google Play قريباً",
+  };
+  const T = new Map(Object.entries(DICT).map(([k, v]) => [norm(k), v]));
+
+  /* ── 2) paragraphs with inline tags, or whose English text was corrected:
+        [css selector, English HTML, Arabic HTML] — applied in BOTH languages ── */
+  const SWAP = [
+    [
+      ".lead",
+      "Lay your phone flat on the floor and begin. Kam Rakaa follows your <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full prayer sequence with you — including the first <b>tashahhud</b> — and keeps count, so your mind stays in the prayer.",
+      "ضع هاتفك مسطّحاً على الأرض وابدأ الصلاة. يتابع كام ركعة <b>قيامك</b> و<b>ركوعك</b> و<b>سجودك</b>، ويسير معك في تسلسل الصلاة كاملاً — بما فيه <b>التشهد الأول</b> — ويحتفظ بالعدّ، ليبقى قلبك حاضراً في الصلاة.",
+    ],
+    [
+      ".bento .tile:nth-child(5) p",
+      "No photos, no video, no server. Use it fully as a guest — everything stays on the device. The camera is used only on the Home screen, and what it sees is never stored.",
+      "لا صور، لا فيديو، لا خادم. استخدمه كاملاً كضيف — كل شيء يبقى على جهازك. لا تُستخدم الكاميرا إلا في الشاشة الرئيسية، وما تراه لا يُخزَّن أبداً.",
+    ],
+    [
+      ".readout",
+      '<b id="deg">136°</b> SE · <span id="km">≈ 1,320 km</span> to Makkah',
+      '<b id="deg">136°</b> جنوب شرق · <span id="km">≈ 1,320 كم</span> إلى مكة',
+    ],
+    [
+      ".how-steps .hstep:nth-child(2) p",
+      "Bow once and hold for about two seconds. The app learns <em>your</em> bowing posture — not a generic one — so counting fits your body, your mat, your room.",
+      "اركع مرة واحدة واثبت نحو ثانيتين. يتعلّم التطبيق وضعية ركوعك <em>أنت</em> — لا وضعية عامة — ليناسب العدّ جسدك وسجادتك وغرفتك.",
+    ],
+    [
+      ".faq .faq-item:nth-child(1) .faq-a p",
+      "No. Camera frames are analysed in memory by an on-device AI model and immediately discarded. Nothing is saved to storage and no image or video is ever sent over the network. The camera preview is only shown on the Home screen, and frames are analysed only while you record your ruku' position or count a prayer.",
+      "لا. تُحلَّل إطارات الكاميرا في الذاكرة بنموذج ذكاء اصطناعي على الجهاز وتُتلف فوراً. لا شيء يُحفظ، ولا تُرسل أي صورة أو فيديو عبر الشبكة. تظهر معاينة الكاميرا في الشاشة الرئيسية فقط، وتُحلَّل الإطارات فقط أثناء تسجيل وضعية ركوعك أو عدّ الصلاة.",
+    ],
+    [
+      ".faq .faq-item:nth-child(3) .faq-a p",
+      "Detection is posture-based and calibrated to your own ruku', so it adapts to different bodies, mats and lighting. If a movement is ever missed, the end-of-prayer dialog notices the incomplete count and offers to save the full prayer with one tap.",
+      "الكشف قائم على الوضعيات ومُعايَر لركوعك أنت، فيتكيّف مع اختلاف الأجساد والسجادات والإضاءة. إذا فاتت حركة، يلاحظ حوار نهاية الصلاة العدّ غير المكتمل ويعرض حفظ الصلاة كاملة بنقرة واحدة.",
+    ],
+    [
+      ".faq .faq-item:nth-child(5) .faq-a p",
+      "In the app: Settings → Profile → Delete account — this deletes your cloud backup, erases the data on that phone and revokes the app's access to your Google account. You can also remove the hidden backup from Google Drive → Settings → Manage apps → Kam Rakaa → Delete hidden app data. Other phones keep their local copy until you sign out or delete there too, but they can no longer sync. Guest data disappears when you clear the app's storage.",
+      "داخل التطبيق: الإعدادات ← الملف الشخصي ← حذف الحساب — يحذف نسختك الاحتياطية السحابية، ويمسح البيانات على ذلك الهاتف، ويلغي وصول التطبيق إلى حساب Google. يمكنك أيضاً إزالة النسخة المخفية من Google Drive ← الإعدادات ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية. الهواتف الأخرى تحتفظ بنسختها المحلية حتى تسجّل الخروج أو تحذف عليها أيضاً، لكنها لا تستطيع المزامنة بعد ذلك. وتختفي بيانات الضيف عند مسح تخزين التطبيق.",
+    ],
+    [
+      "#privacy .priv-grid .priv:nth-child(1) p",
+      "Pose detection runs entirely on your phone — the AI model runs locally and your camera images never leave the device. Frames are analysed in memory and discarded: never saved, never uploaded, never seen by a server. The camera is only used on the Home screen.",
+      "اكتشاف الوضعيات يعمل بالكامل على هاتفك — النموذج يعمل محلياً وصور كاميرتك لا تغادر الجهاز أبداً. تُحلَّل الإطارات في الذاكرة وتُتلف: لا تُحفظ، لا تُرفع، ولا يراها أي خادم. لا تُستخدم الكاميرا إلا في الشاشة الرئيسية.",
+    ],
+    [
+      "#privacy .priv-grid .priv:nth-child(2) p",
+      'If you sign in, your history syncs to a hidden folder in <em>your own</em> Google Drive — a single file only this app can see, under the restricted <code style="font-family:var(--mono);font-size:.85em">drive.appdata</code> scope. Guest mode never touches the cloud at all.',
+      'إذا سجّلت الدخول، تتم مزامنة سجلّك إلى مجلد مخفي في Google Drive <em>الخاص بك</em> — ملف واحد لا يراه إلا هذا التطبيق، ضمن النطاق <code dir="ltr" style="font-family:var(--mono);font-size:.85em">drive.appdata</code>. وضع الضيف لا يلمس السحابة إطلاقاً.',
+    ],
+    [
+      "#privacy .how-del",
+      "<b>Delete your data:</b> in the app, go to <b>Settings → Profile → Delete account</b>, or remove it from <b>Google Drive → Settings (gear) → Manage apps → Kam Rakaa → Delete hidden app data</b>.",
+      "<b>احذف بياناتك:</b> في التطبيق، اذهب إلى <b>الإعدادات ← الملف الشخصي ← حذف الحساب</b>، أو أزلها من <b>Google Drive ← الإعدادات (الترس) ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية</b>.",
+    ],
+  ];
+
+  /* ── 3) attributes + meta ── */
+  const ATTRS = [
+    ["nav.links", "aria-label", "Sections", "الأقسام"],
+    ["#langToggle", "aria-label", "Switch language", "تبديل اللغة"],
+    [".stage", "aria-label", "Animated preview of the app counting rakahs", "معاينة متحركة للتطبيق وهو يعدّ الركعات"],
+  ];
+  const TITLE = {
+    en: "Kam Rakaa — Your prayer, counted for you",
+    ar: "كام ركعة — صلِّ ونحن نعدّ الركعات",
+  };
+  const META = {
+    en: "Place your phone on the floor and pray. Kam Rakaa uses on-device AI to follow your qiyam, ruku' and sujood and count every rakah. Prayer times, Qibla and history in 43 languages.",
+    ar: "ضع هاتفك على الأرض وصلِّ. يستخدم كام ركعة ذكاءً اصطناعياً على جهازك لمتابعة قيامك وركوعك وسجودك وعدّ كل ركعة. مواقيت الصلاة والقبلة والسجل بـ 43 لغة.",
+  };
+
+  /* ── 4) the animated phone in the hero rewrites its own labels in English ── */
+  const POSE = { QIYAM: "قيام", "RUKU'": "ركوع", SUJOOD: "سجود", TASHAHHUD: "تشهد" };
+  const orig = new WeakMap();
+
+  function setIfChanged(el, text) {
+    if (el && el.textContent !== text) el.textContent = text;
+  }
+  function fixDemo() {
+    if (lang !== "ar") return;
+    const p = document.getElementById("posture");
+    if (p && POSE[p.textContent.trim()]) setIfChanged(p, POSE[p.textContent.trim()]);
+    const o = document.getElementById("of");
+    if (o) setIfChanged(o, o.textContent.replace(/^RAKAH (\d+) \/ 4$/, "ركعة $1 / 4"));
+  }
+  ["posture", "of"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (el)
+      new MutationObserver(fixDemo).observe(el, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+  });
+
+  function walk(fn) {
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) =>
+        /^(SCRIPT|STYLE|NOSCRIPT)$/.test(n.parentNode.nodeName)
+          ? NodeFilter.FILTER_REJECT
+          : NodeFilter.FILTER_ACCEPT,
+    });
+    let n;
+    while ((n = w.nextNode())) fn(n);
+  }
+
+  function apply() {
+    const ar = lang === "ar";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = ar ? "rtl" : "ltr";
+    document.body.classList.toggle("rtl", ar);
+    if (pill) pill.textContent = ar ? "EN" : "عربي";
+    document.title = TITLE[lang];
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", META[lang]);
+
+    SWAP.forEach(([sel, en, arHtml]) => {
+      const el = document.querySelector(sel);
+      if (el) el.innerHTML = ar ? arHtml : en;
+    });
+    ATTRS.forEach(([sel, attr, en, arTxt]) => {
+      const el = document.querySelector(sel);
+      if (el) el.setAttribute(attr, ar ? arTxt : en);
+    });
+
+    walk((node) => {
+      if (ar) {
+        if (!orig.has(node)) orig.set(node, node.nodeValue);
+        const src = orig.get(node);
+        const t = norm(src);
+        if (!t) return;
+        let out = T.get(t);
+        if (out === undefined) {
+          const m = t.match(/^RAKAH (\d+) \/ 4$/);
+          out = m ? "ركعة " + m[1] + " / 4" : POSE[t] || null;
         }
-        function apply() {
-          document.documentElement.lang = lang;
-          document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
-          document.body.classList.toggle("rtl", lang === "ar");
-          if (pill) pill.textContent = lang === "ar" ? "EN" : "عربي";
-          document.title =
-            lang === "ar"
-              ? "كام ركعة — صلِّ ونحن نعدّ الركعات"
-              : "Kam Rakaa — Your prayer, counted for you";
-          SWAP.forEach(([sel, en, ar]) => {
-            const el = document.querySelector(sel);
-            if (el) el.innerHTML = lang === "ar" ? ar : en;
-          });
-          walk((node) => {
-            const v = node.nodeValue,
-              t = v.trim();
-            if (!t) return;
-            if (lang === "ar") {
-              if (!orig.has(node)) orig.set(node, v);
-              let out = T[t] || t;
-              out = out.replace(/^RAKAH (\d+) \/ 4$/, "ركعة $1 / 4");
-              if (POSE[out]) out = POSE[out];
-              const lead = v.match(/^\s*/)[0],
-                trail = v.match(/\s*$/)[0];
-              node.nodeValue = lead + out + trail;
-            } else if (orig.has(node)) {
-              node.nodeValue = orig.get(node);
-              orig.delete(node);
-            }
-          });
-        }
-        if (pill)
-          pill.addEventListener("click", () => {
-            lang = lang === "ar" ? "en" : "ar";
-            localStorage.setItem(KEY, lang);
-            apply();
-          });
-        apply();
-        /* keep Arabic on the animated phone demo (its script rewrites labels every 1.5s) */
-        setInterval(() => {
-          if (lang === "ar") {
-            const p = document.getElementById("posture");
-            if (p && POSE[p.textContent.trim()])
-              p.textContent = POSE[p.textContent.trim()];
-            const o = document.getElementById("of");
-            if (o)
-              o.textContent = o.textContent.replace(
-                /^RAKAH (\d+) \/ 4$/,
-                "ركعة $1 / 4",
-              );
-          }
-        }, 500);
-      })();
+        if (out === null) return; // no translation known: keep the original text
+        const lead = src.match(/^\s*/)[0];
+        const trail = src.match(/\s*$/)[0];
+        node.nodeValue = lead + out + trail;
+      } else if (orig.has(node)) {
+        node.nodeValue = orig.get(node);
+        orig.delete(node);
+      }
+    });
+    fixDemo();
+  }
+
+  if (pill)
+    pill.addEventListener("click", () => {
+      lang = lang === "ar" ? "en" : "ar";
+      localStorage.setItem(KEY, lang);
+      apply();
+    });
+  apply();
+})();
+
     </script>
   </body>
 </html>

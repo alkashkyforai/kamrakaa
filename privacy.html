@@ -1,450 +1,300 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KamRakaa – Privacy Policy</title>
-    <style>
-      :root {
-        --bg: #fafaf7;
-        --card: #fff;
-        --text: #191920;
-        --muted: #55565f;
-        --line: #e3e3dd;
-        --accent: #2563eb;
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #17181c;
-          --card: #202127;
-          --text: #fafafc;
-          --muted: #b4b5be;
-          --line: #34353d;
-          --accent: #6ea0ff;
-        }
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font:
-          16px/1.65 system-ui,
-          -apple-system,
-          "Segoe UI",
-          Roboto,
-          sans-serif;
-      }
-      main {
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 32px 18px 64px;
-      }
-      h1 {
-        font-size: 2rem;
-        margin: 0 0 4px;
-      }
-      h2 {
-        font-size: 1.2rem;
-        margin: 34px 0 8px;
-        padding-top: 6px;
-        border-top: 1px solid var(--line);
-      }
-      p,
-      li {
-        color: var(--text);
-      }
-      .muted {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-      ul {
-        padding-left: 1.2rem;
-      }
-      li {
-        margin: 4px 0;
-      }
-      a {
-        color: var(--accent);
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        overflow: hidden;
-        font-size: 0.94rem;
-      }
-      th,
-      td {
-        text-align: left;
-        vertical-align: top;
-        padding: 10px 12px;
-        border-bottom: 1px solid var(--line);
-      }
-      th {
-        background: rgba(127, 127, 127, 0.08);
-      }
-      tr:last-child td {
-        border-bottom: none;
-      }
-      .box {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 12px 16px;
-      }
-      .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 760px;
-        margin: 0 auto;
-        padding: 18px 18px 0;
-        gap: 12px;
-        flex-wrap: wrap;
-      }
-      .brand {
-        font-weight: 800;
-        color: var(--text);
-        text-decoration: none;
-        font-size: 1.05rem;
-      }
-      .brand span {
-        color: #b8860b;
-      }
-      .pill {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 7px 16px;
-        font-weight: 700;
-        cursor: pointer;
-        background: var(--card);
-        color: var(--text);
-        font-size: 0.88rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="topbar">
-      <a class="brand" href="index.html"
-        >🕌 Kam Rakaa <span>· كام ركعة</span></a
-      >
-      <div style="display: flex; gap: 10px; align-items: center">
-        <button
-          class="pill"
-          onclick="location.href = 'delete-account.html'"
-          data-en="Delete account data"
-          data-ar="حذف بيانات الحساب"
-        >
-          Delete account data
-        </button>
-        <button class="pill" id="langBtn" type="button">عربي</button>
-      </div>
-    </div>
-    <main>
-      <h1>Privacy Policy</h1>
-      <p class="muted">
-        KamRakaa (كام ركعة) &middot; Last updated: November 5, 2026
-      </p>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kam Rakaa – Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#fafaf7; --card:#fff; --text:#191920; --muted:#55565f; --line:#e3e3dd; --accent:#2563eb; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#17181c; --card:#202127; --text:#fafafc; --muted:#b4b5be; --line:#34353d; --accent:#6ea0ff; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  html[lang="ar"] body { font-family:"Noto Kufi Arabic",system-ui,sans-serif; line-height:1.95; }
 
-      <p>
-        This Privacy Policy explains what information the KamRakaa mobile app
-        ("the app", "we", "us") uses, where it is stored, and the choices you
-        have. The app counts the rakahs of your prayer using your phone's camera
-        and on-device AI, saves your prayer history, and shows prayer times and
-        the Qibla direction.
-      </p>
+  /* ── language switching: every block exists twice, only one is shown ── */
+  html[lang="ar"] .l-en { display:none !important; }
+  html[lang="en"] .l-ar { display:none !important; }
 
-      <div class="box">
-        <strong>In short:</strong> we run no servers and have no access to your
-        data. Camera images are analysed on your phone and are never saved or
-        uploaded. If you sign in with Google, your prayer history is backed up
-        to a hidden folder in <em>your own</em> Google Drive, which only you and
-        the app can reach. We show no ads and use no analytics or tracking.
-      </div>
+  main { max-width:760px; margin:0 auto; padding:24px 18px 64px; }
+  h1 { font-size:2rem; margin:0 0 4px; }
+  h2 { font-size:1.2rem; margin:34px 0 8px; padding-top:6px; border-top:1px solid var(--line); }
+  .muted { color:var(--muted); font-size:.92rem; }
+  ul, ol { padding-inline-start:1.3rem; }
+  li { margin:4px 0; }
+  a { color:var(--accent); }
+  code { font-family:ui-monospace,Consolas,monospace; direction:ltr; unicode-bidi:embed; }
+  .ltr { direction:ltr; unicode-bidi:embed; }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; font-size:.94rem; }
+  th, td { text-align:start; vertical-align:top; padding:10px 12px; border-bottom:1px solid var(--line); }
+  th { background:rgba(127,127,127,.08); }
+  tr:last-child td { border-bottom:none; }
+  .box { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 16px; }
 
-      <h2>1. Who is responsible</h2>
-      <p>
-        The app is published by <strong>[YOUR NAME OR COMPANY NAME]</strong>.
-        Contact: <a href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.
-      </p>
+  .topbar { display:flex; justify-content:space-between; align-items:center; max-width:760px; margin:0 auto; padding:18px 18px 0; gap:12px; flex-wrap:wrap; }
+  .brand { font-weight:800; color:var(--text); text-decoration:none; font-size:1.05rem; }
+  .brand span { color:#b8860b; }
+  .actions { display:flex; gap:10px; align-items:center; }
+  .pill { border:1px solid var(--line); border-radius:999px; padding:7px 16px; font-weight:700; cursor:pointer; background:var(--card); color:var(--text); font-size:.88rem; text-decoration:none; font-family:inherit; }
+</style>
+</head>
+<body>
 
-      <h2>2. Information the app uses</h2>
-      <table>
-        <tr>
-          <th>Information</th>
-          <th>Why it is used</th>
-          <th>Where it goes</th>
-        </tr>
-        <tr>
-          <td>
-            <strong>Camera images</strong> (front camera, live video frames)
-          </td>
-          <td>
-            To detect your body posture (standing, bowing, prostration) and
-            count rakahs.
-          </td>
-          <td>
-            Processed in real time on your device by an on-device AI model.
-            <strong>Never recorded, saved, or transmitted.</strong> The camera
-            runs only while you are calibrating or counting a prayer.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Location</strong> (approximate or precise, only while the
-            app is open)
-          </td>
-          <td>
-            To calculate prayer times and the Qibla direction, and to show your
-            city name.
-          </td>
-          <td>
-            Prayer times and Qibla are computed on your device. The last known
-            location and city name are cached on your device so the app works
-            offline. To turn coordinates into a city name, the app uses your
-            phone's operating-system geocoding service, which on Android is
-            provided by Google and may send the coordinates to Google (see
-            section 5). We do not receive your location.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Prayer history</strong> (prayer type, date, start and end
-            time, duration, number of rakahs counted)
-          </td>
-          <td>To show your history, calendar and details screens.</td>
-          <td>
-            Stored on your device. If you sign in with Google, also backed up to
-            your Google Drive (section 4).
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Google account profile</strong> (name, email address,
-            profile photo, account ID), only if you choose "Continue with
-            Google"
-          </td>
-          <td>
-            To identify which account owns the data, show your profile, and run
-            the Drive backup.
-          </td>
-          <td>Kept on your device only. Not sent to us.</td>
-        </tr>
-        <tr>
-          <td><strong>Motion / compass sensor</strong> (magnetometer)</td>
-          <td>To point the Qibla needle.</td>
-          <td>Read live on your device. Not stored or sent anywhere.</td>
-        </tr>
-        <tr>
-          <td>
-            <strong>App settings</strong> (language, theme, calculation method,
-            madhab)
-          </td>
-          <td>To remember your choices.</td>
-          <td>Stored on your device only.</td>
-        </tr>
-      </table>
-      <p>
-        We do not collect your contacts, files, microphone audio, advertising
-        ID, or payment information.
-      </p>
+<div class="topbar">
+  <a class="brand" href="index.html">🕌 Kam Rakaa <span>· كام ركعة</span></a>
+  <div class="actions">
+    <a class="pill" href="delete-account.html"><span class="l-en">Delete account data</span><span class="l-ar">حذف بيانات الحساب</span></a>
+    <button class="pill" id="langBtn" type="button">عربي</button>
+  </div>
+</div>
 
-      <h2>3. Guest mode</h2>
-      <p>
-        You can use the app as a guest without signing in. In guest mode
-        everything stays on your device only. If you later sign in with Google,
-        the app asks whether you want to merge your guest history into that
-        account. Guest data is never uploaded unless you choose to merge it.
-      </p>
+<main>
 
-      <h2>4. Google sign-in and Google Drive backup</h2>
-      <p>
-        If you sign in with Google, the app asks for one permission:
-        <code>drive.appdata</code> (access to the app's own hidden
-        application-data folder in your Google Drive). Through it, the app:
-      </p>
-      <ul>
-        <li>
-          stores one small file containing your prayer history (and markers for
-          deleted entries) so your history can be synced between your devices
-          and restored on a new phone;
-        </li>
-        <li>cannot see, read, or change any of your other Drive files;</li>
-        <li>
-          sends data only directly between your phone and Google over encrypted
-          (HTTPS) connections. We run no intermediate server.
-        </li>
-      </ul>
-      <p>
-        The hidden folder is not visible in your normal Drive, and we (the
-        developer) cannot access it. Sync runs when you open the app, when your
-        phone reconnects to the internet, after you save or delete a prayer, and
-        occasionally in the background. Google handles that data under its own
-        <a href="https://policies.google.com/privacy">Privacy Policy</a>.
-      </p>
-      <p>
-        The app's use and transfer of information received from Google APIs
-        adheres to the
-        <a
-          href="https://developers.google.com/terms/api-services-user-data-policy"
-          >Google API Services User Data Policy</a
-        >, including the Limited Use requirements. We use Google user data only
-        to provide the backup and sync feature you see in the app. We do not use
-        it for advertising, do not sell it, and do not allow humans to read it.
-      </p>
+<!-- ════════════════════════ ENGLISH ════════════════════════ -->
+<article class="l-en" lang="en" dir="ltr">
 
-      <h2>5. Third parties and sharing</h2>
-      <ul>
-        <li>
-          <strong>We do not sell, rent, or share your personal data</strong>
-          with advertisers, data brokers, or anyone else.
-        </li>
-        <li>
-          <strong>Google</strong> provides sign-in, Google Drive storage (the
-          backup you control), and on Android the location-to-city lookup. These
-          are provided directly between you and Google.
-        </li>
-        <li>
-          <strong>AI model download:</strong> the on-device pose-detection model
-          is downloaded once from a public model-hosting server when first
-          needed. The request contains no personal data beyond what every
-          internet request reveals, such as your IP address.
-        </li>
-        <li>
-          The app contains no advertising, analytics, or crash-reporting
-          services.
-        </li>
-      </ul>
-      <!-- OPTIONAL: keep the next bullet only if you ship over-the-air updates with Expo (EAS Update); delete it otherwise.
-<ul><li><strong>App updates:</strong> the app may check Expo's update service (expo.dev) for new versions of the app's code. This request includes technical information such as app version, platform, and IP address, and no personal content.</li></ul>
+<h1>Privacy Policy</h1>
+<p class="muted">Kam Rakaa (كام ركعة) &middot; Last updated: November 5, 2026</p>
+
+<p>This Privacy Policy explains what information the Kam Rakaa mobile app ("the app", "we", "us") uses, where it is stored, and the choices you have. The app counts the rakahs of your prayer using your phone's camera and on-device AI, saves your prayer history, and shows prayer times and the Qibla direction.</p>
+
+<div class="box">
+  <strong>In short:</strong> we run no servers and have no access to your data. Camera images are analysed on your phone and are never saved or uploaded. If you sign in with Google, your prayer history is backed up to a hidden folder in <em>your own</em> Google Drive, which only you and the app can reach. We show no ads and use no analytics or tracking.
+</div>
+
+<h2>1. Who is responsible</h2>
+<p>The app is published by <strong>[YOUR NAME OR COMPANY NAME]</strong>. Contact: <a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.</p>
+
+<h2>2. Information the app uses</h2>
+<table>
+  <tr><th>Information</th><th>Why it is used</th><th>Where it goes</th></tr>
+  <tr>
+    <td><strong>Camera images</strong> (front camera, live video frames)</td>
+    <td>To detect your body posture (standing, bowing, prostration) and count rakahs.</td>
+    <td>The camera preview is shown while the Home screen is open. The AI analyses frames in real time on your device, only while you record your ruku' position or count a prayer. <strong>Images are never recorded, saved, or transmitted.</strong></td>
+  </tr>
+  <tr>
+    <td><strong>Location</strong> (approximate or precise, only while the app is open)</td>
+    <td>To calculate prayer times and the Qibla direction, and to show your city name.</td>
+    <td>Prayer times and Qibla are computed on your device. The last known location and city name are cached on your device so the app works offline. To turn coordinates into a city name, the app uses your phone's operating-system geocoding service, which on Android is provided by Google and may send the coordinates to Google (see section 5). We do not receive your location.</td>
+  </tr>
+  <tr>
+    <td><strong>Prayer history</strong> (prayer type, date, start and end time, duration, number of rakahs counted)</td>
+    <td>To show your history, calendar and details screens.</td>
+    <td>Stored on your device. If you sign in with Google, also backed up to your Google Drive (section 4).</td>
+  </tr>
+  <tr>
+    <td><strong>Google account profile</strong> (name, email address, profile photo, account ID), only if you choose "Continue with Google"</td>
+    <td>To identify which account owns the data, show your profile, and run the Drive backup.</td>
+    <td>Kept on your device only. Not sent to us.</td>
+  </tr>
+  <tr>
+    <td><strong>Motion / compass sensor</strong> (magnetometer)</td>
+    <td>To point the Qibla needle.</td>
+    <td>Read live on your device. Not stored or sent anywhere.</td>
+  </tr>
+  <tr>
+    <td><strong>App settings</strong> (language, theme, calculation method, madhab)</td>
+    <td>To remember your choices.</td>
+    <td>Stored on your device only.</td>
+  </tr>
+</table>
+<p>We do not collect your contacts, files, microphone audio, advertising ID, or payment information.</p>
+
+<h2>3. Guest mode</h2>
+<p>You can use the app as a guest without signing in. In guest mode everything stays on your device only. If you later sign in with Google, the app asks whether you want to merge your guest history into that account. Guest data is never uploaded unless you choose to merge it.</p>
+
+<h2>4. Google sign-in and Google Drive backup</h2>
+<p>If you sign in with Google, the app asks for one permission: <code>drive.appdata</code> (access to the app's own hidden application-data folder in your Google Drive). Through it, the app:</p>
+<ul>
+  <li>stores one small file containing your prayer history (and markers for deleted entries) so your history can be synced between your devices and restored on a new phone;</li>
+  <li>cannot see, read, or change any of your other Drive files;</li>
+  <li>sends data only directly between your phone and Google over encrypted (HTTPS) connections. We run no intermediate server.</li>
+</ul>
+<p>The hidden folder is not visible in your normal Drive, and we (the developer) cannot access it. Sync runs when you open the app, when your phone reconnects to the internet, after you save or delete a prayer, and occasionally in the background. Google handles that data under its own <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
+<p>The app's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. We use Google user data only to provide the backup and sync feature you see in the app. We do not use it for advertising, do not sell it, and do not allow humans to read it.</p>
+
+<h2>5. Third parties and sharing</h2>
+<ul>
+  <li><strong>We do not sell, rent, or share your personal data</strong> with advertisers, data brokers, or anyone else.</li>
+  <li><strong>Google</strong> provides sign-in, Google Drive storage (the backup you control), and on Android the location-to-city lookup. These are provided directly between you and Google.</li>
+  <li><strong>AI model download:</strong> the on-device pose-detection model is downloaded once from a public model-hosting server when first needed. The request contains no personal data beyond what every internet request reveals, such as your IP address.</li>
+  <li>The app contains no advertising, analytics, or crash-reporting services.</li>
+</ul>
+<!-- OPTIONAL: if you ship over-the-air updates with Expo (EAS Update), add this bullet to the list above (English)
+and its Arabic twin to the Arabic list below; otherwise leave both out.
+  EN: <li><strong>App updates:</strong> the app may check Expo's update service (expo.dev) for new versions of the app's code. This request includes technical information such as app version, platform, and IP address, and no personal content.</li>
+  AR: <li><strong>تحديثات التطبيق:</strong> قد يتحقق التطبيق من خدمة التحديث لدى Expo (expo.dev) من وجود إصدارات جديدة من شيفرة التطبيق. يتضمن هذا الطلب معلومات تقنية مثل إصدار التطبيق والمنصّة وعنوان IP، ولا يتضمن أي محتوى شخصي.</li>
 -->
 
-      <h2>6. Storage, retention and security</h2>
-      <ul>
-        <li>
-          Data on your device is kept until you delete it in the app, clear the
-          app's storage, or uninstall the app.
-        </li>
-        <li>
-          Your Drive backup is kept until you delete your account data in the
-          app (section 7) or remove it yourself in Google Drive.
-        </li>
-        <li>
-          Network connections use HTTPS. Sign-in sessions are managed by
-          Google's sign-in system; the app does not store your password and does
-          not keep Google access tokens in its own storage.
-        </li>
-        <li>
-          No method of storage is perfectly secure, but because we hold no copy
-          of your data, we cannot lose or leak it from our side.
-        </li>
-      </ul>
+<h2>6. Storage, retention and security</h2>
+<ul>
+  <li>Data on your device is kept until you delete it in the app, clear the app's storage, or uninstall the app.</li>
+  <li>Your Drive backup is kept until you delete your account data in the app (section 7) or remove it yourself in Google Drive.</li>
+  <li>Network connections use HTTPS. Sign-in sessions are managed by Google's sign-in system; the app does not store your password and does not keep Google access tokens in its own storage.</li>
+  <li>No method of storage is perfectly secure, but because we hold no copy of your data, we cannot lose or leak it from our side.</li>
+</ul>
 
-      <h2>7. Your choices and deleting your data</h2>
-      <ul>
-        <li>
-          <strong>Delete from the app:</strong> Settings &rarr; Profile &rarr;
-          <em>Delete account</em> (visible when signed in with Google). This
-          deletes your backup from Google Drive, erases your prayers and cached
-          location from the device, disconnects the app from your Google
-          account, and signs you out. It requires an internet connection. Your
-          Google account itself is not deleted.
-        </li>
-        <li>
-          <strong>Delete individual prayers or whole days</strong> from the
-          History screen at any time.
-        </li>
-        <li>
-          <strong>Without the app:</strong> remove the hidden data in Google
-          Drive &rarr; Settings &rarr; Manage apps &rarr; KamRakaa &rarr;
-          <em>Delete hidden app data</em>, and remove the app's access at
-          <a href="https://myaccount.google.com/permissions"
-            >myaccount.google.com/permissions</a
-          >.
-        </li>
-        <li>
-          <strong>Permissions:</strong> you can turn off camera or location
-          access in your phone's settings. Camera access is required for
-          counting prayers; location access is required for prayer times and
-          Qibla.
-        </li>
-        <li>
-          <strong>Other devices:</strong> deleting on one phone does not erase
-          copies already on other phones signed into the same account. Sign out
-          or delete on those phones too.
-        </li>
-      </ul>
-      <p>
-        Step-by-step instructions are also on our
-        <a href="delete-account.html">account deletion page</a>.
-      </p>
+<h2>7. Your choices and deleting your data</h2>
+<ul>
+  <li><strong>Delete from the app:</strong> Settings &rarr; Profile &rarr; <em>Delete account</em> (visible when signed in with Google). This deletes your backup from Google Drive, erases your prayers and cached location from the device, disconnects the app from your Google account, and signs you out. It requires an internet connection. Your Google account itself is not deleted.</li>
+  <li><strong>Delete individual prayers or whole days</strong> from the History screen at any time.</li>
+  <li><strong>Without the app:</strong> remove the hidden data in Google Drive &rarr; Settings &rarr; Manage apps &rarr; Kam Rakaa &rarr; <em>Delete hidden app data</em>, and remove the app's access at <a class="ltr" href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+  <li><strong>Permissions:</strong> you can turn off camera or location access in your phone's settings. Camera access is required for counting prayers; location access is required for prayer times and Qibla.</li>
+  <li><strong>Other devices:</strong> deleting on one phone does not erase copies already on other phones signed into the same account. Sign out or delete on those phones too.</li>
+</ul>
+<p>Step-by-step instructions are also on our <a href="delete-account.html">account deletion page</a>.</p>
 
-      <h2>8. Sensitive nature of prayer data</h2>
-      <p>
-        A record of your prayers can reveal religious practice. For this reason
-        we keep it only on your device and, if you choose to sign in, in your
-        own private Google Drive storage. We never access, analyse, or share it.
-      </p>
+<h2>8. Sensitive nature of prayer data</h2>
+<p>A record of your prayers can reveal religious practice. For this reason we keep it only on your device and, if you choose to sign in, in your own private Google Drive storage. We never access, analyse, or share it.</p>
 
-      <h2>9. Children</h2>
-      <p>
-        The app is a general-audience religious utility and is not directed at
-        children under 13. We do not knowingly collect personal information from
-        children. Because we receive no data at all, a parent or guardian can
-        manage everything by deleting the data on the device or in the child's
-        own Google account.
-      </p>
+<h2>9. Children</h2>
+<p>The app is a general-audience religious utility and is not directed at children under 13. We do not knowingly collect personal information from children. Because we receive no data at all, a parent or guardian can manage everything by deleting the data on the device or in the child's own Google account.</p>
 
-      <h2>10. Your rights</h2>
-      <p>
-        Depending on where you live (for example under the EU/UK GDPR or similar
-        laws), you may have rights to access, correct, delete, or export your
-        data and to object to processing. Because your data lives only on your
-        device and in your own Google Drive, you can exercise these rights
-        directly (see section 7). You can also contact us at
-        <a href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.
-      </p>
+<h2>10. Your rights</h2>
+<p>Depending on where you live (for example under the EU/UK GDPR or similar laws), you may have rights to access, correct, delete, or export your data and to object to processing. Because your data lives only on your device and in your own Google Drive, you can exercise these rights directly (see section 7). You can also contact us at <a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.</p>
 
-      <h2>11. Changes to this policy</h2>
-      <p>
-        If we change how the app handles data, we will update this page and the
-        "Last updated" date above. Significant changes will also be noted in the
-        app or its store listing.
-      </p>
+<h2>11. Changes to this policy</h2>
+<p>If we change how the app handles data, we will update this page and the "Last updated" date above. Significant changes will also be noted in the app or its store listing.</p>
 
-      <h2>12. Contact</h2>
-      <p><a href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a></p>
-    </main>
-    <script>
-      (function () {
-        let l =
-          localStorage.getItem("kr-lang") ||
-          ((navigator.language || "en").toLowerCase().startsWith("ar")
-            ? "ar"
-            : "en");
-        const B = document.getElementById("langBtn");
-        function a() {
-          document.documentElement.lang = l;
-          document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
-          B.textContent = l === "ar" ? "EN" : "عربي";
-          document.querySelectorAll("[data-en]").forEach((e) => {
-            const h = l === "ar" ? e.dataset.ar : e.dataset.en;
-            if (/</.test(h)) e.innerHTML = h;
-            else e.textContent = h;
-          });
-        }
-        B.onclick = () => {
-          l = l === "ar" ? "en" : "ar";
-          localStorage.setItem("kr-lang", l);
-          a();
-        };
-        a();
-      })();
-    </script>
-  </body>
+<h2>12. Contact</h2>
+<p><a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a></p>
+
+</article>
+
+<!-- ════════════════════════ ARABIC ════════════════════════ -->
+<article class="l-ar" lang="ar" dir="rtl">
+
+<h1>سياسة الخصوصية</h1>
+<p class="muted">كام ركعة (Kam Rakaa) &middot; آخر تحديث: 5 نوفمبر 2026</p>
+
+<p>توضّح سياسة الخصوصية هذه ما المعلومات التي يستخدمها تطبيق كام ركعة للجوّال («التطبيق» أو «نحن»)، وأين تُخزَّن، وما الخيارات المتاحة لك. يعدّ التطبيق ركعات صلاتك باستخدام كاميرا هاتفك وذكاء اصطناعي يعمل على الجهاز، ويحفظ سجلّ صلواتك، ويعرض مواقيت الصلاة واتجاه القبلة.</p>
+
+<div class="box">
+  <strong>باختصار:</strong> لا نشغّل أي خوادم ولا نستطيع الوصول إلى بياناتك. تُحلَّل صور الكاميرا على هاتفك ولا تُحفظ ولا تُرفع أبداً. وإذا سجّلت الدخول عبر Google، يُنسخ سجلّ صلواتك احتياطياً في مجلد مخفي داخل Google Drive <em>الخاص بك</em>، ولا يصل إليه سواك والتطبيق. لا نعرض إعلانات ولا نستخدم أي أدوات تحليل أو تتبّع.
+</div>
+
+<h2>1. الجهة المسؤولة</h2>
+<p>ينشر التطبيق <strong>[اسمك أو اسم شركتك]</strong>. للتواصل: <a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.</p>
+
+<h2>2. المعلومات التي يستخدمها التطبيق</h2>
+<table>
+  <tr><th>المعلومة</th><th>سبب الاستخدام</th><th>أين تذهب</th></tr>
+  <tr>
+    <td><strong>صور الكاميرا</strong> (الكاميرا الأمامية، إطارات الفيديو المباشر)</td>
+    <td>لاكتشاف وضعية جسمك (قيام، ركوع، سجود) وعدّ الركعات.</td>
+    <td>تظهر معاينة الكاميرا أثناء فتح الشاشة الرئيسية. يحلّل الذكاء الاصطناعي الإطارات لحظياً على جهازك، وفقط أثناء تسجيل وضعية ركوعك أو عدّ الصلاة. <strong>لا تُسجَّل الصور ولا تُحفظ ولا تُرسل أبداً.</strong></td>
+  </tr>
+  <tr>
+    <td><strong>الموقع</strong> (تقريبي أو دقيق، فقط أثناء فتح التطبيق)</td>
+    <td>لحساب مواقيت الصلاة واتجاه القبلة وعرض اسم مدينتك.</td>
+    <td>تُحسب المواقيت والقبلة على جهازك. يُخزَّن آخر موقع معروف واسم المدينة على جهازك ليعمل التطبيق دون اتصال. ولتحويل الإحداثيات إلى اسم مدينة يستخدم التطبيق خدمة تحديد العناوين في نظام هاتفك، وهي على أندرويد من Google وقد ترسل الإحداثيات إلى Google (انظر البند 5). نحن لا نستلم موقعك.</td>
+  </tr>
+  <tr>
+    <td><strong>سجلّ الصلوات</strong> (نوع الصلاة، التاريخ، وقت البدء والانتهاء، المدة، عدد الركعات المعدودة)</td>
+    <td>لعرض شاشات السجلّ والتقويم والتفاصيل.</td>
+    <td>يُخزَّن على جهازك. وإذا سجّلت الدخول عبر Google يُنسخ احتياطياً أيضاً إلى Google Drive الخاص بك (البند 4).</td>
+  </tr>
+  <tr>
+    <td><strong>ملف حساب Google</strong> (الاسم، البريد الإلكتروني، صورة الحساب، معرّف الحساب)، فقط إذا اخترت «المتابعة بحساب Google»</td>
+    <td>لمعرفة الحساب الذي تعود إليه البيانات، وعرض ملفك الشخصي، وتشغيل النسخ الاحتياطي على Drive.</td>
+    <td>يبقى على جهازك فقط. لا يُرسَل إلينا.</td>
+  </tr>
+  <tr>
+    <td><strong>مستشعر الحركة / البوصلة</strong> (المغناطيسي)</td>
+    <td>لتوجيه إبرة القبلة.</td>
+    <td>يُقرأ لحظياً على جهازك. لا يُخزَّن ولا يُرسل إلى أي مكان.</td>
+  </tr>
+  <tr>
+    <td><strong>إعدادات التطبيق</strong> (اللغة، المظهر، طريقة الحساب، المذهب)</td>
+    <td>لتذكّر اختياراتك.</td>
+    <td>تُخزَّن على جهازك فقط.</td>
+  </tr>
+</table>
+<p>لا نجمع جهات اتصالك ولا ملفاتك ولا صوت الميكروفون ولا معرّف الإعلانات ولا معلومات الدفع.</p>
+
+<h2>3. وضع الضيف</h2>
+<p>يمكنك استخدام التطبيق كضيف دون تسجيل الدخول. في وضع الضيف تبقى جميع البيانات على جهازك فقط. وإذا سجّلت الدخول عبر Google لاحقاً، يسألك التطبيق إن كنت تريد دمج سجلّ الضيف في ذلك الحساب. لا تُرفع بيانات الضيف إلا إذا اخترت دمجها.</p>
+
+<h2>4. تسجيل الدخول عبر Google والنسخ الاحتياطي على Google Drive</h2>
+<p>عند تسجيل الدخول عبر Google يطلب التطبيق إذناً واحداً: <code>drive.appdata</code> (الوصول إلى مجلد بيانات التطبيق المخفي الخاص به داخل Google Drive). ومن خلاله فإن التطبيق:</p>
+<ul>
+  <li>يخزّن ملفاً صغيراً واحداً يحتوي سجلّ صلواتك (وعلامات الإدخالات المحذوفة) ليمكن مزامنة السجلّ بين أجهزتك واستعادته على هاتف جديد؛</li>
+  <li>لا يستطيع رؤية أو قراءة أو تعديل أي ملف آخر في Drive؛</li>
+  <li>يرسل البيانات مباشرة بين هاتفك وGoogle عبر اتصالات مشفّرة (HTTPS) فقط. لا نشغّل أي خادم وسيط.</li>
+</ul>
+<p>المجلد المخفي لا يظهر في Drive العادي، ولا نستطيع نحن (المطوّر) الوصول إليه. تعمل المزامنة عند فتح التطبيق، وعند عودة الهاتف إلى الإنترنت، وبعد حفظ صلاة أو حذفها، وأحياناً في الخلفية. وتعالج Google هذه البيانات وفق <a href="https://policies.google.com/privacy">سياسة الخصوصية</a> الخاصة بها.</p>
+<p>يلتزم استخدام التطبيق للمعلومات المستلمة من واجهات Google البرمجية ونقلها بـ<a href="https://developers.google.com/terms/api-services-user-data-policy">سياسة بيانات المستخدم لخدمات Google API</a>، بما في ذلك متطلبات «الاستخدام المحدود». نستخدم بيانات مستخدم Google فقط لتقديم ميزة النسخ الاحتياطي والمزامنة الظاهرة في التطبيق. لا نستخدمها للإعلانات، ولا نبيعها، ولا نسمح لأي شخص بالاطلاع عليها.</p>
+
+<h2>5. الأطراف الثالثة والمشاركة</h2>
+<ul>
+  <li><strong>لا نبيع بياناتك الشخصية ولا نؤجّرها ولا نشاركها</strong> مع المعلنين أو وسطاء البيانات أو أي جهة أخرى.</li>
+  <li><strong>Google</strong> توفّر تسجيل الدخول وتخزين Google Drive (النسخة الاحتياطية التي تتحكم بها)، وعلى أندرويد تحويل الموقع إلى اسم مدينة. وتتم هذه الخدمات مباشرة بينك وبين Google.</li>
+  <li><strong>تنزيل نموذج الذكاء الاصطناعي:</strong> يُنزَّل نموذج اكتشاف الوضعيات الذي يعمل على جهازك مرة واحدة من خادم عام لاستضافة النماذج عند الحاجة إليه أول مرة. لا يحتوي الطلب على بيانات شخصية سوى ما يكشفه أي طلب عبر الإنترنت، مثل عنوان IP.</li>
+  <li>لا يحتوي التطبيق على أي خدمات إعلانات أو تحليلات أو تقارير أعطال.</li>
+</ul>
+
+<h2>6. التخزين والاحتفاظ والأمان</h2>
+<ul>
+  <li>تبقى البيانات على جهازك حتى تحذفها من التطبيق أو تمسح تخزين التطبيق أو تلغي تثبيته.</li>
+  <li>تبقى نسختك الاحتياطية على Drive حتى تحذف بيانات حسابك من التطبيق (البند 7) أو تزيلها بنفسك من Google Drive.</li>
+  <li>تستخدم الاتصالات الشبكية HTTPS. وتُدار جلسات تسجيل الدخول بواسطة نظام تسجيل الدخول من Google؛ لا يخزّن التطبيق كلمة مرورك ولا يحتفظ برموز وصول Google في تخزينه الخاص.</li>
+  <li>لا توجد طريقة تخزين آمنة تماماً، لكن بما أننا لا نحتفظ بأي نسخة من بياناتك فلا يمكننا فقدانها أو تسريبها من جهتنا.</li>
+</ul>
+
+<h2>7. خياراتك وحذف بياناتك</h2>
+<ul>
+  <li><strong>الحذف من التطبيق:</strong> الإعدادات &larr; الملف الشخصي &larr; <em>حذف الحساب</em> (يظهر عند تسجيل الدخول عبر Google). يحذف ذلك نسختك الاحتياطية من Google Drive، ويمسح صلواتك والموقع المخزّن من الجهاز، ويفصل التطبيق عن حساب Google ويسجّل خروجك. يتطلب اتصالاً بالإنترنت. أما حساب Google نفسه فلا يُحذف.</li>
+  <li><strong>احذف صلوات فردية أو أياماً كاملة</strong> من شاشة السجلّ في أي وقت.</li>
+  <li><strong>دون التطبيق:</strong> أزل البيانات المخفية من Google Drive &larr; الإعدادات &larr; إدارة التطبيقات &larr; Kam Rakaa &larr; <em>حذف بيانات التطبيق المخفية</em>، وأزل وصول التطبيق من <a class="ltr" href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+  <li><strong>الأذونات:</strong> يمكنك إيقاف الوصول إلى الكاميرا أو الموقع من إعدادات هاتفك. الكاميرا مطلوبة لعدّ الصلاة، والموقع مطلوب للمواقيت والقبلة.</li>
+  <li><strong>الأجهزة الأخرى:</strong> الحذف على هاتف لا يمحو النسخ الموجودة على هواتف أخرى مسجّلة في الحساب نفسه. سجّل الخروج أو احذف على تلك الهواتف أيضاً.</li>
+</ul>
+<p>تعليمات تفصيلية متوفرة أيضاً في <a href="delete-account.html">صفحة حذف الحساب</a>.</p>
+
+<h2>8. الطبيعة الحساسة لبيانات الصلاة</h2>
+<p>قد يكشف سجلّ صلواتك عن ممارستك الدينية. لذلك نحتفظ به على جهازك فقط، وإن اخترت تسجيل الدخول ففي مساحة Google Drive الخاصة بك. لا نطّلع عليه ولا نحلّله ولا نشاركه أبداً.</p>
+
+<h2>9. الأطفال</h2>
+<p>التطبيق أداة دينية للجمهور العام وليس موجّهاً للأطفال دون 13 عاماً. لا نجمع عن علم معلومات شخصية من الأطفال. ولأننا لا نستلم أي بيانات إطلاقاً، يمكن لولي الأمر إدارة كل شيء بحذف البيانات من الجهاز أو من حساب Google الخاص بالطفل.</p>
+
+<h2>10. حقوقك</h2>
+<p>بحسب مكان إقامتك (مثل اللائحة الأوروبية/البريطانية GDPR أو قوانين مشابهة) قد تكون لك حقوق في الوصول إلى بياناتك أو تصحيحها أو حذفها أو تصديرها، وفي الاعتراض على معالجتها. ولأن بياناتك موجودة فقط على جهازك وفي Google Drive الخاص بك، يمكنك ممارسة هذه الحقوق مباشرة (انظر البند 7). ويمكنك أيضاً مراسلتنا على <a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a>.</p>
+
+<h2>11. التغييرات على هذه السياسة</h2>
+<p>إذا غيّرنا طريقة تعامل التطبيق مع البيانات فسنحدّث هذه الصفحة وتاريخ «آخر تحديث» أعلاه. وسنشير إلى التغييرات الجوهرية أيضاً داخل التطبيق أو في صفحته على المتجر.</p>
+
+<h2>12. التواصل</h2>
+<p><a class="ltr" href="mailto:[YOUR-EMAIL]">[YOUR-EMAIL]</a></p>
+
+</article>
+
+</main>
+
+<script>
+  (function () {
+    var KEY = "kr-lang";
+    var TITLES = { en: "Kam Rakaa – Privacy Policy", ar: "كام ركعة – سياسة الخصوصية" };
+    var l = localStorage.getItem(KEY) ||
+      ((navigator.language || "en").toLowerCase().indexOf("ar") === 0 ? "ar" : "en");
+    var B = document.getElementById("langBtn");
+    function apply() {
+      document.documentElement.lang = l;
+      document.documentElement.dir = l === "ar" ? "rtl" : "ltr";
+      document.title = TITLES[l];
+      B.textContent = l === "ar" ? "EN" : "عربي";
+    }
+    B.addEventListener("click", function () {
+      l = l === "ar" ? "en" : "ar";
+      localStorage.setItem(KEY, l);
+      apply();
+    });
+    apply();
+  })();
+</script>
+</body>
 </html>
