@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kam Rakaa — Your prayer, counted for you</title>
+    <title>KamRakaa — Your prayer, counted for you</title>
     <meta
       name="description"
-      content="Place your phone on the floor and pray. Kam Rakaa uses on-device AI to follow your qiyam, ruku' and sujood and count every rakah. Prayer times, Qibla and history in 43 languages."
+      content="Place your phone on the floor and pray. KamRakaa uses on-device AI to follow your qiyam, ruku' and sujood and count every rakah. Prayer times, Qibla and history in 43 languages."
     />
     <meta
       property="og:title"
-      content="Kam Rakaa — Your prayer, counted for you"
+      content="KamRakaa — Your prayer, counted for you"
     />
     <meta
       property="og:description"
@@ -428,7 +428,7 @@
       }
       h1 {
         font-size: clamp(2.7rem, 7.4vw, 5.3rem);
-        line-height: 1.02;
+        /* line-height: 1.02; */
         letter-spacing: -0.04em;
         font-weight: 800;
         max-width: 14ch;
@@ -1477,7 +1477,7 @@
     <header id="hdr">
       <div class="wrap bar">
         <a class="brand" href="#top"
-          ><i>🕌</i>Kam Rakaa <span class="ar" lang="ar">· كام ركعة</span></a
+          ><i>🕌</i>KamRakaa <span class="ar" lang="ar">· كام ركعة</span></a
         >
         <nav class="links" aria-label="Sections">
           <a href="#features">Features</a><a href="#how">How it works</a
@@ -1531,7 +1531,7 @@
               <span class="row"><span>the rakahs.</span></span>
             </h1>
             <p class="lead">
-              Lay your phone flat on the floor and begin. Kam Rakaa follows your
+              Lay your phone flat on the floor and begin. KamRakaa follows your
               <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full
               prayer sequence with you — including the first <b>tashahhud</b> —
               and keeps count, so your mind stays in the prayer.
@@ -1794,7 +1794,7 @@
                 auto-detection by location.
               </p>
             </div>
-            <div class="tile rv" style="grid-column: span 2">
+            <div class="tile rv">
               <div class="ic">
                 <svg
                   viewBox="0 0 24 24"
@@ -2006,7 +2006,7 @@
                 phone — no sign-in, no cloud, no tracking. Google sign-in exists
                 only if you want your history backed up and synced across
                 devices, into a hidden folder in your own Google Drive that only
-                Kam Rakaa can see.
+                KamRakaa can see.
               </p>
             </div>
           </div>
@@ -2048,7 +2048,7 @@
                 In the app: Settings → Profile → Delete account — this wipes
                 your cloud backup, removes the local data and signs you out on
                 every device. You can also remove the hidden backup from Google
-                Drive → Settings → Manage apps → Kam Rakaa → Delete hidden app
+                Drive → Settings → Manage apps → KamRakaa → Delete hidden app
                 data. Guest data disappears the moment you clear the app's
                 storage.
               </p>
@@ -2115,7 +2115,7 @@
                 <b>Delete your data:</b> in the app, go to
                 <b>Settings → Profile → Delete account</b>, or remove it from
                 <b
-                  >Google Drive → Settings (gear) → Manage apps → Kam Rakaa →
+                  >Google Drive → Settings (gear) → Manage apps → KamRakaa →
                   Delete hidden app data</b
                 >.
               </div>
@@ -2166,7 +2166,7 @@
     <footer>
       <div class="wrap">
         <span
-          >© <span id="yr">2026</span> Kam Rakaa ·
+          >© <span id="yr">2026</span> KamRakaa ·
           <span lang="ar" style="font-family: var(--arfont); color: var(--gold)"
             >كام ركعة</span
           ></span
@@ -2332,7 +2332,7 @@
           "RUKU'",
           "QIYAM",
           "SUJOOD",
-          "TASHAHHUD",
+          "SITTING",
           "SUJOOD",
         ];
         const els = [0, 1, 2, 3].map((i) => document.getElementById("p" + i));
@@ -2345,7 +2345,7 @@
         function show() {
           els.forEach((e, i) => e.classList.toggle("on", i === POSES[step]));
           label.textContent =
-            step === 4 && rakah === 2 ? "TASHAHHUD" : NAMES[step];
+            step === 4 && rakah === 2 ? "SITTING" : NAMES[step];
           bars.forEach((b, i) => b.classList.toggle("done", i <= step));
           label.classList.remove("flash");
           void label.offsetWidth;
@@ -2415,7 +2415,7 @@
     </script>
     <script>
     /* ═══════════════════════════════════════════════════════════════
-   Kam Rakaa — EN ⇄ AR engine for index.html
+   KamRakaa — EN ⇄ AR engine for index.html
    Replaces the old second <script> block ("Bilingual engine").
    Key fix: text is compared AFTER collapsing whitespace, so paragraphs that your
    code formatter wrapped over several lines now match their translation.
@@ -2526,7 +2526,7 @@
     "Does the app record or upload video of me praying?":
       "هل يسجّل التطبيق أو يرفع فيديو لي وأنا أصلّي؟",
     "Does it work without an account?": "هل يعمل بدون حساب؟",
-    "Fully. Guest mode keeps everything in local storage on your phone — no sign-in, no cloud, no tracking. Google sign-in exists only if you want your history backed up and synced across devices, into a hidden folder in your own Google Drive that only Kam Rakaa can see.":
+    "Fully. Guest mode keeps everything in local storage on your phone — no sign-in, no cloud, no tracking. Google sign-in exists only if you want your history backed up and synced across devices, into a hidden folder in your own Google Drive that only KamRakaa can see.":
       "تماماً. وضع الضيف يحتفظ بكل شيء في التخزين المحلي على هاتفك — بلا تسجيل دخول، بلا سحابة، بلا تتبّع. تسجيل الدخول عبر Google موجود فقط إن أردت نسخ سجلّك احتياطياً ومزامنته بين أجهزتك، داخل مجلد مخفي في Google Drive الخاص بك لا يراه إلا كام ركعة.",
     "What if the app misses a rakah or a movement?":
       "ماذا لو فات التطبيق ركعة أو حركة؟",
@@ -2554,7 +2554,7 @@
   const SWAP = [
     [
       ".lead",
-      "Lay your phone flat on the floor and begin. Kam Rakaa follows your <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full prayer sequence with you — including the first <b>tashahhud</b> — and keeps count, so your mind stays in the prayer.",
+      "Lay your phone flat on the floor and begin. KamRakaa follows your <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full prayer sequence with you — including the first <b>tashahhud</b> — and keeps count, so your mind stays in the prayer.",
       "ضع هاتفك مسطّحاً على الأرض وابدأ الصلاة. يتابع كام ركعة <b>قيامك</b> و<b>ركوعك</b> و<b>سجودك</b>، ويسير معك في تسلسل الصلاة كاملاً — بما فيه <b>التشهد الأول</b> — ويحتفظ بالعدّ، ليبقى قلبك حاضراً في الصلاة.",
     ],
     [
@@ -2584,7 +2584,7 @@
     ],
     [
       ".faq .faq-item:nth-child(5) .faq-a p",
-      "In the app: Settings → Profile → Delete account — this deletes your cloud backup, erases the data on that phone and revokes the app's access to your Google account. You can also remove the hidden backup from Google Drive → Settings → Manage apps → Kam Rakaa → Delete hidden app data. Other phones keep their local copy until you sign out or delete there too, but they can no longer sync. Guest data disappears when you clear the app's storage.",
+      "In the app: Settings → Profile → Delete account — this deletes your cloud backup, erases the data on that phone and revokes the app's access to your Google account. You can also remove the hidden backup from Google Drive → Settings → Manage apps → KamRakaa → Delete hidden app data. Other phones keep their local copy until you sign out or delete there too, but they can no longer sync. Guest data disappears when you clear the app's storage.",
       "داخل التطبيق: الإعدادات ← الملف الشخصي ← حذف الحساب — يحذف نسختك الاحتياطية السحابية، ويمسح البيانات على ذلك الهاتف، ويلغي وصول التطبيق إلى حساب Google. يمكنك أيضاً إزالة النسخة المخفية من Google Drive ← الإعدادات ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية. الهواتف الأخرى تحتفظ بنسختها المحلية حتى تسجّل الخروج أو تحذف عليها أيضاً، لكنها لا تستطيع المزامنة بعد ذلك. وتختفي بيانات الضيف عند مسح تخزين التطبيق.",
     ],
     [
@@ -2599,7 +2599,7 @@
     ],
     [
       "#privacy .how-del",
-      "<b>Delete your data:</b> in the app, go to <b>Settings → Profile → Delete account</b>, or remove it from <b>Google Drive → Settings (gear) → Manage apps → Kam Rakaa → Delete hidden app data</b>.",
+      "<b>Delete your data:</b> in the app, go to <b>Settings → Profile → Delete account</b>, or remove it from <b>Google Drive → Settings (gear) → Manage apps → KamRakaa → Delete hidden app data</b>.",
       "<b>احذف بياناتك:</b> في التطبيق، اذهب إلى <b>الإعدادات ← الملف الشخصي ← حذف الحساب</b>، أو أزلها من <b>Google Drive ← الإعدادات (الترس) ← إدارة التطبيقات ← كام ركعة ← حذف بيانات التطبيق المخفية</b>.",
     ],
   ];
@@ -2611,16 +2611,16 @@
     [".stage", "aria-label", "Animated preview of the app counting rakahs", "معاينة متحركة للتطبيق وهو يعدّ الركعات"],
   ];
   const TITLE = {
-    en: "Kam Rakaa — Your prayer, counted for you",
+    en: "KamRakaa — Your prayer, counted for you",
     ar: "كام ركعة — صلِّ ونحن نعدّ الركعات",
   };
   const META = {
-    en: "Place your phone on the floor and pray. Kam Rakaa uses on-device AI to follow your qiyam, ruku' and sujood and count every rakah. Prayer times, Qibla and history in 43 languages.",
+    en: "Place your phone on the floor and pray. KamRakaa uses on-device AI to follow your qiyam, ruku' and sujood and count every rakah. Prayer times, Qibla and history in 43 languages.",
     ar: "ضع هاتفك على الأرض وصلِّ. يستخدم كام ركعة ذكاءً اصطناعياً على جهازك لمتابعة قيامك وركوعك وسجودك وعدّ كل ركعة. مواقيت الصلاة والقبلة والسجل بـ 43 لغة.",
   };
 
   /* ── 4) the animated phone in the hero rewrites its own labels in English ── */
-  const POSE = { QIYAM: "قيام", "RUKU'": "ركوع", SUJOOD: "سجود", TASHAHHUD: "تشهد" };
+  const POSE = { QIYAM: "قيام", "RUKU'": "ركوع", SUJOOD: "سجود", SITTING: "جلوس" };
   const orig = new WeakMap();
 
   function setIfChanged(el, text) {
