@@ -1171,6 +1171,15 @@
         direction: rtl;
         font-family: var(--arfont);
       }
+      .lang-help a {
+        color: var(--gold);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        word-break: break-all;
+      }
+      .lang-help a:hover {
+        color: var(--text);
+      }
 
       /* privacy */
       .priv-grid {
@@ -1971,22 +1980,58 @@ fully as a guest. What the camera sees is never stored, and the only ads are a s
             language on first launch — no setup, no wrong-language flash.
           </p>
           <div class="langs rv">
-            <span lang="ar" class="rtld">العربية</span><span>English</span
-            ><span lang="tr">Türkçe</span><span lang="id">Bahasa Indonesia</span
-            ><span lang="ms">Bahasa Melayu</span><span lang="bn">বাংলা</span
-            ><span lang="ur" class="rtld">اردو</span
-            ><span lang="fa" class="rtld">فارسی</span
-            ><span lang="ps" class="rtld">پښتو</span
-            ><span lang="hi">हिन्दी</span><span lang="ru">Русский</span
-            ><span lang="fr">Français</span><span lang="de">Deutsch</span
-            ><span lang="es">Español</span><span lang="sw">Kiswahili</span
-            ><span lang="ha">Hausa</span><span lang="am">አማርኛ</span
-            ><span lang="so">Soomaali</span><span lang="yo">Yorùbá</span
-            ><span lang="zh">简体中文</span><span lang="th">ไทย</span
-            ><span lang="fil">Filipino</span><span lang="nl">Nederlands</span
-            ><span lang="pt">Português</span><span lang="it">Italiano</span
-            ><span>…and 15 more</span>
+            <span lang="ar" class="rtld">العربية</span>
+            <span lang="en">English</span>
+            <span lang="tr">Türkçe</span>
+            <span lang="de">Deutsch</span>
+            <span lang="bn">বাংলা</span>
+            <span lang="fr">Français</span>
+            <span lang="ha">Hausa</span>
+            <span lang="id">Bahasa Indonesia</span>
+            <span lang="ms">Bahasa Melayu</span>
+            <span lang="ru">Русский</span>
+            <span lang="sq">Shqip</span>
+            <span lang="az">Azərbaycan dili</span>
+            <span lang="bm">Bamanankan</span>
+            <span lang="bs">Bosanski</span>
+            <span lang="kk">Қазақ тілі</span>
+            <span lang="ky">Кыргызча</span>
+            <span lang="so">Soomaali</span>
+            <span lang="tg">Тоҷикӣ</span>
+            <span lang="tk">Türkmençe</span>
+            <span lang="uz">Oʻzbekcha</span>
+            <span lang="wo">Wolof</span>
+            <span lang="yo">Yorùbá</span>
+            <span lang="es">Español</span>
+            <span lang="ur" class="rtld">اردو</span>
+            <span lang="fa" class="rtld">فارسی</span>
+            <span lang="ps" class="rtld">پښتو</span>
+            <span lang="hi">हिन्दी</span>
+            <span lang="zh">简体中文</span>
+            <span lang="ku">Kurdî</span>
+            <span lang="ff">Fulfulde</span>
+            <span lang="sw">Kiswahili</span>
+            <span lang="am">አማርኛ</span>
+            <span lang="om">Afaan Oromoo</span>
+            <span lang="ln">Lingála</span>
+            <span lang="mg">Malagasy</span>
+            <span lang="th">ไทย</span>
+            <span lang="fil">Filipino</span>
+            <span lang="tt">Татарча</span>
+            <span lang="ce">Нохчийн</span>
+            <span lang="nl">Nederlands</span>
+            <span lang="pt">Português</span>
+            <span lang="it">Italiano</span>
+            <span lang="bg">Български</span>
           </div>
+
+          <p class="sub rv d1 lang-help" id="langHelp" style="margin-top: 28px">
+            Many of our translations were created with the help of AI and may contain
+            mistakes. If you speak one of these languages and would like to help improve
+            it, please write to us at
+            <a href="mailto:kamrakaa2027@gmail.com?subject=Translation%20help">kamrakaa2027@gmail.com</a>.
+            We read every message.
+          </p>
         </div>
       </section>
 
@@ -2557,7 +2602,6 @@ fully as a guest. What the camera sees is never stored, and the only ads are a s
     "Speaks your language — 43 of them.": "يتحدث لغتك — 43 لغة.",
     "Right-to-left scripts fully supported, with dates and digits that follow each language's own conventions. The app follows your phone's language on first launch — no setup, no wrong-language flash.":
       "دعم كامل للغات المكتوبة من اليمين إلى اليسار، مع تواريخ وأرقام تتبع أعراف كل لغة. التطبيق يتبع لغة هاتفك عند أول تشغيل — بلا إعداد، وبلا ومضة بلغة خاطئة.",
-    "…and 15 more": "…و15 لغة أخرى",
 
     /* faq */
     "Questions": "أسئلة",
@@ -2601,6 +2645,11 @@ fully as a guest. What the camera sees is never stored, and the only ads are a s
       ".lead",
       "Lay your phone flat on the floor and begin. KamRakaa follows your <b>qiyam</b>, <b>ruku'</b> and <b>sujood</b>, walks the full prayer sequence with you — including the first <b>tashahhud</b> — and keeps count, so your mind stays in the prayer.",
       "ضع هاتفك مسطّحاً على الأرض وابدأ الصلاة. يتابع كام ركعة <b>قيامك</b> و<b>ركوعك</b> و<b>سجودك</b>، ويسير معك في تسلسل الصلاة كاملاً — بما فيه <b>التشهد الأول</b> — ويحتفظ بالعدّ، ليبقى قلبك حاضراً في الصلاة.",
+    ],
+    [
+      "#langHelp",
+        'Many of our translations were created with the help of AI and may contain mistakes. If you speak one of these languages and would like to help improve it, please write to us at <a href="mailto:kamrakaa2027@gmail.com?subject=Translation%20help">kamrakaa2027@gmail.com</a>. We read every message.',
+        'تمت ترجمة كثير من نصوص التطبيق بمساعدة الذكاء الاصطناعي وقد تحتوي على أخطاء. إذا كنت تتحدث إحدى هذه اللغات وترغب في المساعدة على تحسينها، فراسلنا على <a href="mailto:kamrakaa2027@gmail.com?subject=Translation%20help" dir="ltr">kamrakaa2027@gmail.com</a> نقرأ كل رسالة.',
     ],
     [
       ".bento .tile:nth-child(5) p",
